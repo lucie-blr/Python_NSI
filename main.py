@@ -25,6 +25,7 @@ class Player(Sprite): #PLAYER
         self.stand_image = self.image
         self.jump_image = pygame.image.load("./alien/p1_jump.png")
         
+        
         #SPEED
         self.speed = 10
         self.jumpspeed = 15
@@ -33,7 +34,7 @@ class Player(Sprite): #PLAYER
         self.min_jumpspeed = 3
         self.prev_key = pygame.key.get_pressed()
         
-        self.walk_cycle = [pygame.image.load(f"./alien/p1_walk{i:0>2}.png") for i in range(1,12)]
+        self.walk_cycle = [pygame.image.load(f"./alien/p1_walk{i:0>2}.png") for i in range(1,3)]
         self.animation_index = 0
         self.facing_left = False
         
