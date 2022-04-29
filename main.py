@@ -1,8 +1,13 @@
-import pygame, numpy
+import pygame, numpy, time
 
 WIDTH = 800
 HEIGHT = 600
 BACKGROUND = (0, 0, 0)
+
+def doublejump(dj):
+    time.sleep(1)
+    dj = 2
+    return dj
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, image, startx, starty):
@@ -28,11 +33,14 @@ class Player(Sprite): #PLAYER
         
         #SPEED
         self.speed = 10
-        self.jumpspeed = 15
-        self.gravity = 2
+        self.jumpspeed = 30
+        self.gravity = 4
         self.vsp = 0 # vertical speed
         self.min_jumpspeed = 3
         self.prev_key = pygame.key.get_pressed()
+        self.dj = 1
+        self.djcl = 0
+        self.cl = 0
         
         self.walk_cycle = [pygame.image.load(f"./alien/p1_walk{i:0>2}.png") for i in range(1,3)]
         self.animation_index = 0
@@ -41,6 +49,9 @@ class Player(Sprite): #PLAYER
     def update(self, boxes):
         hsp = 0 # horizontal speed
         onground = self.check_collision(0, 1, boxes)
+
+        if onground:
+            self.dj = 1
 
         # check keys
         key = pygame.key.get_pressed()
@@ -55,13 +66,28 @@ class Player(Sprite): #PLAYER
         else:
             self.image = self.stand_image
 
-        if key[pygame.K_UP] and onground:
-            self.vsp = -self.jumpspeed
-
+        if key[pygame.K_UP]:
+            if onground:
+                self.vsp = -self.jumpspeed
+                self.djcl = time.time()
+                self.dj = 1
+            
+            self.cl = time.time() - self.djcl 
+            
+            
+            if self.cl >= 0.2 and self.dj == 1 and not onground:
+                self.vsp = -self.jumpspeed
+                self.dj = 2
+                  
+                
+                
+            
+                
         # variable height jumping
         if self.prev_key[pygame.K_UP] and not key[pygame.K_UP]:
             if self.vsp < -self.min_jumpspeed:
                 self.vsp = -self.min_jumpspeed
+                self.dj = 1
 
         self.prev_key = key
 
@@ -120,6 +146,8 @@ def main():
     clock = pygame.time.Clock()
 
     player = Player(100,200)
+    
+    player2 = Player(200,300)
     
     boxes = pygame.sprite.Group()
     for bx in range(0,400,70):
