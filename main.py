@@ -1,7 +1,7 @@
 import pygame, numpy
 
-WIDTH = 800
-HEIGHT = 600
+WIDTH = 1200
+HEIGHT = 700
 BACKGROUND = (0, 0, 0)
 
 class Sprite(pygame.sprite.Sprite):
