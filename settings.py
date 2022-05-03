@@ -13,15 +13,15 @@ level_map = [
 level_map_2 =[
 'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
 '                                ',
+'                       W        ',
+'                      GGGG      ',
 '                                ',
-'                                ',
-'                                ',
-'                                ',
-'                                ',
+'       W    G                   ',
+'      GGG                       ',
 '                   W            ',
 '                   W            ',
 '      P            W            ',
-'GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG']
+'GGGGGGGGGGGGGGGGGGGGGSSSGGGGGGGG']
 
 tile_size = 64
 width = 1200
