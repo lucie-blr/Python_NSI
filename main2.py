@@ -3,9 +3,6 @@ from settings import *
 from tile import Tile
 from level import Level
 
-height = 700
-width = 1200
-
 pygame.init()
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
