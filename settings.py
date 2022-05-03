@@ -10,19 +10,32 @@ level_map = [
 'X     XXXXXX   XXXXX        ',
 'X      XXXXX   XXXXX        ',
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
-level_map_2 =[
-'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-'                                ',
-'                       W        ',
-'                      GGGG      ',
-'                                ',
-'       W    G                   ',
-'      GGG                       ',
-'                   W            ',
-'                   W            ',
-'      P            W            ',
-'GGGGGGGGGGGGGGGGGGGGGSSSGGGGGGGG']
+level_map_2 =[ #le joueur voit par paquet de dix lignes
+'WTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+'W                                ',
+'W                       W        ',
+'W                      GGGG      ',
+'W                                ',
+'W       W    G                   ',
+'W      GGG                       ',
+'W                                ',
+'W P                              ',
+'W                                ',
+'WGGGGGGGGGGGGGGGGGGGGGSSSGGGGGGGG',
+'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
+'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
+'',
+'',
+'',
+'',
+'',
+'',
+'',
+'',
+'',
+'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS']
 
-tile_size = 64
+
+tile_size = 48
 width = 1200
-height = len(level_map) * tile_size
+height = 600

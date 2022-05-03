@@ -40,7 +40,12 @@ class Level:
                 if cell == 'S':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    tile = Tile_spike((x,y),tile_size)
+                    tile = Tile_spike((x,y+48),tile_size)
+                    self.tiles.add(tile)
+                if cell == 'Y':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_s((x,y),tile_size)
                     self.tiles.add(tile)
         
     def scroll_x(self):
@@ -68,8 +73,7 @@ class Level:
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
-                    pygame.quit()
-                    sys.exit()
+                    start()
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
                 elif player.direction.x > 0:
