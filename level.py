@@ -16,7 +16,7 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
-                if cell == 'X':
+                if cell == 'T':
                     x = col_index * tile_size
                     y = row_index * tile_size
                     tile = Tile((x,y),tile_size)
