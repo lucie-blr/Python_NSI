@@ -73,7 +73,20 @@ class Level:
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
+                    
+                    #Death animation
+                    animation = player.import_folder(player.character_pass + 'death')
+                    print(str(len(animation)))
+                    i = 0
+                    while i < len(animation):
+                        player.image = animation[i]
+                        player.status = 'death'
+                        i = i + 1    
+                        print('t')
+                        time.sleep(0.15)
+
                     start()
+
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
                 elif player.direction.x > 0:
@@ -86,7 +99,12 @@ class Level:
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
-                    start()
+                   #Death animation
+                    player.status = 'death'
+                    if player.death == 20:
+                        start()  
+
+                    
                 if player.direction.y > 0:
                     player.rect.bottom = sprite.rect.top
                     player.direction.y = 0

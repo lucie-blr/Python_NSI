@@ -1,16 +1,8 @@
 import pygame
 import time
 import os
+from settings import import_folder
 
-def import_folder(path):
-    surface_list = []
-    for _,__,img_files in os.walk(path):
-        for image in img_files:
-            full_path = path + '/' + image
-            image_surf = pygame.image.load(full_path).convert_alpha()
-            surface_list.append(image_surf)
-    
-    return surface_list
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos):
@@ -21,6 +13,8 @@ class Player(pygame.sprite.Sprite):
         self.image = self.animations['idle'][self.frame_index]
         self.rect = self.image.get_rect(topleft = pos)
         self.status = 'idle'
+        self.facing_right = True
+        self.death = 0
         
         #mouvement
         self.direction = pygame.math.Vector2(0,0)
@@ -31,28 +25,47 @@ class Player(pygame.sprite.Sprite):
         self.time = time.time()            
     
     def import_character_assets(self):
-        character_path='./alien/'
-        self.animations = {'idle':[],'run':[],'jump':[],'fall':[]}
+        self.character_path='./alien/'
+        self.animations = {'idle':[],'run':[],'jump':[],'fall':[], 'death':[]}
+        
         
         for animation in self.animations.keys():
-            full_path = character_path + animation
-            self.animations[animation] = import_folder(full_path)
+            self.full_path = self.character_path + animation
+            self.animations[animation] = import_folder(self.full_path)
+            
+        
     
     def animate(self):
+        
         animation = self.animations[self.status]
         
-        self.frame_index += self.animation_speed
-        if self.frame_index >= len(animation):
-            self.frame_index = 0
-        
-        self.image = animation[int(self.frame_index)]
+        if self.status == 'death':
+            
+            self.image = animation[int(self.death)]
+            time.sleep(0.02)
+            self.death = self.death + 1
+            self.direction.x = 0
+            self.direction.y = 0
+            return
+        elif self.death == 0:
+            self.frame_index += self.animation_speed
+            if self.frame_index >= len(animation):
+                self.frame_index = 0
+            
+            image = animation[int(self.frame_index)]
+            if self.facing_right:
+                flipped_image = pygame.transform.flip(image, True, False)
+                self.image = flipped_image
+            else:
+                
+                self.image = image
     
     def get_status(self):
         if self.direction.y < 0:
             self.status = 'jump'
-        elif self.direction.y > 0:
+        elif self.direction.y > 1:
             self.status = 'fall'
-        elif self.direction.x != '0':
+        elif self.direction.x != 0:
             self.status = 'run'
         else:
             self.status = 'idle'
@@ -60,12 +73,15 @@ class Player(pygame.sprite.Sprite):
     def get_input(self):
         keys = pygame.key.get_pressed()
         
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_LEFT] and keys[pygame.K_RIGHT]:
+            self.direction.x=0
+        
+        elif keys[pygame.K_RIGHT]:
             self.direction.x = 1
-            self.image = pygame.image.load("./alien/right.png")
+            self.facing_right = True
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
-            self.image = pygame.image.load("./alien/left.png")
+            self.facing_right = False
         else:
             self.direction.x = 0
         
@@ -85,7 +101,8 @@ class Player(pygame.sprite.Sprite):
         self.direction.y = self.jump_speed
     
     def update(self):
-        self.get_input()
+        if self.death == 0:
+            self.get_input()
         self.animate()
         self.get_status()
         self.rect.x += self.direction.x * self.speed
