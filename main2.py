@@ -75,22 +75,25 @@ class Level:
                 if sprite.damage == True:
                     
                     #Death animation
-                    animation = player.import_folder(player.character_pass + 'death')
-                    print(str(len(animation)))
-                    i = 0
-                    while i < len(animation):
-                        player.image = animation[i]
-                        player.status = 'death'
-                        i = i + 1    
-                        print('t')
-                        time.sleep(0.15)
-
-                    start()
+                    player.status = 'death'
+                    if player.death == 20:
+                        start()
 
                 if player.direction.x < 0:
+                    player.gravity = 0
                     player.rect.left = sprite.rect.right
+                    if sprite.climb:
+                        player.direction.y = -0.8
+                        player.double_jump = 1
                 elif player.direction.x > 0:
+                    player.gravity = 0
                     player.rect.right = sprite.rect.left
+                    if sprite.climb:
+                        player.direction.y = -0.8
+                        player.double_jump = 1
+            else: player.gravity = 0.8
+                    
+                    
         
     def vertical_mouvement_collision(self):
         player = self.player.sprite
