@@ -12,6 +12,7 @@ class Level:
         self.setup(level_data)
         self.world_shift = 0
         
+        
     def setup(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
@@ -52,6 +53,7 @@ class Level:
         player = self.player.sprite
         player_x = player.rect.centerx 
         direction_x = player.direction.x
+        width, h = pygame.display.get_surface().get_size()
         
         if player_x < width / 5 and direction_x < 0:
             self.world_shift = 5
@@ -128,10 +130,19 @@ class Level:
 
 def start():
     pygame.init()
-    screen = pygame.display.set_mode((width, height))
+    width = input("Width (\"full\" to get fullscreen):")
+    if width == "full":
+        screen = pygame.display.set_mode()
+    else:
+        width = int(width)
+        height = int(input("Height :"))
+        screen = pygame.display.set_mode((width, height))
+    
     clock = pygame.time.Clock()
     level = Level(level_map_2, screen)
+    width, height = screen.get_size()
     bg = pygame.image.load("./alien/background.jpg")
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

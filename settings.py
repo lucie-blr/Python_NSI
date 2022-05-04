@@ -4,13 +4,13 @@ level_map = [
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 'X                           ',
 'X            X              ',
-'X  P         X              ',
 'X            X              ',
 'X            X              ',
 'X            X              ',
-'X      XXXXX    XXXX        ',
-'X     XXXXXX   XXXXX        ',
-'X      XXXXX   XXXXX        ',
+'X            X              ',
+'Y      XXXXX    XXXX        ',
+'Y P   XXXXXX   XXXXX        ',
+'Y      XXXXX   XXXXX        ',
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 level_map_2 =[ #le joueur voit par paquet de dix lignes
 'WTTTTTTTT    TTTTTTTTTTTTTTTTTTTT',
@@ -20,10 +20,10 @@ level_map_2 =[ #le joueur voit par paquet de dix lignes
 'W       W    W                   ',
 'W       W    W                   ',
 'W       W    W                   ',
-'W       W    W                   ',
-'W P                              ',
-'W                                ',
-'WGGGGGGGGGGGGGGGGGGGGGSSSGGGGGGGG',
+'W       W    W           Y       ',
+'W P                      Y       ',
+'W                        Y       ',
+'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
 'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
 'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
 '',
@@ -39,9 +39,6 @@ level_map_2 =[ #le joueur voit par paquet de dix lignes
 
 
 tile_size = 48
-width = 1200
-height = 600
-
 
 def import_folder(path):
     surface_list = []
