@@ -28,6 +28,11 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_ground((x,y),tile_size)
                     self.tiles.add(tile)
+                if cell == 'E':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_earth((x,y),tile_size)
+                    self.tiles.add(tile)
                 if cell == 'W':
                     x = col_index * tile_size
                     y = row_index * tile_size
