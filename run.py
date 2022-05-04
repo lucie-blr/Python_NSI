@@ -66,6 +66,7 @@ def on_setting():
 pygame.init()
 pygame.display.set_caption('NekoDarkLand')
 screen = pygame.display.set_mode((1200,700))
+bg = pygame.image.load("./alien/background2.jpg")
 clock = pygame.time.Clock()
 gui_font = pygame.font.Font(None,30)
 logo = pygame.image.load(r'logo.png')
@@ -83,7 +84,7 @@ def buttons_draw():
 		b.draw()
  
 while True:
-	screen.blit(logo,(200,200))
+	screen.blit(bg,(0,0))
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			pygame.quit()
