@@ -79,7 +79,7 @@ class Level:
                     #Death animation
                     player.status = 'death'
                     if player.death == 20:
-                        start()
+                        main()
 
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
@@ -105,7 +105,7 @@ class Level:
                    #Death animation
                     player.status = 'death'
                     if player.death == 20:
-                        start()  
+                        main()  
 
                     
                 if player.direction.y > 0:
@@ -128,8 +128,9 @@ class Level:
         self.vertical_mouvement_collision()
         self.player.draw(self.display_surface)
 
-def start():
+def main():
     pygame.init()
+    '''
     width = input("Width (\"full\" to get fullscreen):")
     if width == "full":
         screen = pygame.display.set_mode()
@@ -137,7 +138,8 @@ def start():
         width = int(width)
         height = int(input("Height :"))
         screen = pygame.display.set_mode((width, height))
-    
+    '''
+    screen = pygame.display.set_mode((1200, 700))
     clock = pygame.time.Clock()
     level = Level(level_map_2, screen)
     width, height = screen.get_size()
@@ -155,5 +157,6 @@ def start():
         
         pygame.display.update()
         clock.tick(60)
-
-start()
+        
+if __name__ == "__main__":
+    main()
