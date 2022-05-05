@@ -75,7 +75,7 @@ height = screen.get_height()
 width = screen.get_width()
  
 button1 = Button('Play',200,40,(500,500),5)
-button2 = Button('Setting',200,40,(500,550),5)
+button2 = Button('Settings',200,40,(500,550),5)
 button3 = Button('Exit',200,40,(500,600),5)
 
 
