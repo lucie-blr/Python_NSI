@@ -100,18 +100,18 @@ class Level:
                     
                 if sprite.checkpoint:
                     self.spawn = [sprite.rect.x, sprite.rect.y]
-                    
+                else:    
 
-                if player.direction.x < 0:
-                    player.rect.left = sprite.rect.right
-                    if sprite.climb:
-                        player.direction.y = 1
-                        player.double_jump = 1
-                elif player.direction.x > 0:
-                    player.rect.right = sprite.rect.left
-                    if sprite.climb:
-                        player.direction.y = 1
-                        player.double_jump = 1
+                    if player.direction.x < 0:
+                        player.rect.left = sprite.rect.right
+                        if sprite.climb:
+                            player.direction.y = 1
+                            player.double_jump = 1
+                    elif player.direction.x > 0:
+                        player.rect.right = sprite.rect.left
+                        if sprite.climb:
+                            player.direction.y = 1
+                            player.double_jump = 1
             else: player.gravity = 0.8
                     
                     
@@ -131,14 +131,15 @@ class Level:
                 if sprite.checkpoint:
                     self.spawn = [sprite.rect.x, sprite.rect.y]
                     
-                if player.direction.y > 0:
-                    player.rect.bottom = sprite.rect.top
-                    player.direction.y = 0
-                    player.double_jump = 1
-                    player.time = time.time()
-                elif player.direction.y < 0:
-                    player.rect.top = sprite.rect.bottom
-                    player.direction.y = 0
+                else:
+                    if player.direction.y > 0:
+                        player.rect.bottom = sprite.rect.top
+                        player.direction.y = 0
+                        player.double_jump = 1
+                        player.time = time.time()
+                    elif player.direction.y < 0:
+                        player.rect.top = sprite.rect.bottom
+                        player.direction.y = 0
                     
     
     def run(self):
