@@ -60,6 +60,11 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_s((x,y),tile_size)
                     self.tiles.add(tile)
+                if cell == 'C':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_checkpoint((x,y),tile_size)
+                    self.tiles.add(tile)
         
     def scroll_x(self):
         player = self.player.sprite
@@ -67,11 +72,11 @@ class Level:
         direction_x = player.direction.x
         width, h = pygame.display.get_surface().get_size()
         
-        if player_x < width / 5 and direction_x < 0:
+        if player_x < width / 3 and direction_x < 0:
             self.world_shift = 5
             player.speed = 0
         
-        elif player_x > width - (width / 5) and direction_x > 0:
+        elif player_x > width - (width / 2) and direction_x > 0:
             self.world_shift = -5
             player.speed = 0
         
@@ -91,7 +96,11 @@ class Level:
                     #Death animation
                     player.status = 'death'
                     if player.death == 20:
-                        main(self.spawn)
+                        main(self.spawn)  
+                    
+                if sprite.checkpoint:
+                    self.spawn = [sprite.rect.x, sprite.rect.y]
+                    
 
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
@@ -117,8 +126,10 @@ class Level:
                    #Death animation
                     player.status = 'death'
                     if player.death == 20:
-                        main()  
-
+                        main(self.spawn)  
+                    
+                if sprite.checkpoint:
+                    self.spawn = [sprite.rect.x, sprite.rect.y]
                     
                 if player.direction.y > 0:
                     player.rect.bottom = sprite.rect.top
