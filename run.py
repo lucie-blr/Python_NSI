@@ -95,7 +95,7 @@ while True:
 			if pygame.mouse.get_pressed()[0]:
 				if 500 <= mouse[0] <= 700 and 500 <= mouse[1] <= 540:
 					print("play")
-					main()
+					main("null")
 				if 500 <= mouse[0] <= 700 and 550 <= mouse[1] <= 590:
 					print("setting")
 				if 500 <= mouse[0] <= 700 and 600 <= mouse[1] <= 640:

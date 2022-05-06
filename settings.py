@@ -1,17 +1,5 @@
 import pygame, os
 
-level_map = [
-'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-'X                           ',
-'X            X              ',
-'X            X              ',
-'X            X              ',
-'X            X              ',
-'X            X              ',
-'Y      XXXXX    XXXX        ',
-'Y P   XXXXXX   XXXXX        ',
-'Y      XXXXX   XXXXX        ',
-'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 level_map_2 =[ #le joueur voit par paquet de dix lignes
 'WTTTTTTTT    TTTTTTTTTTTTTTTTTTTT',
 'W       W    W                   ',
@@ -32,7 +20,30 @@ level_map_2 =[ #le joueur voit par paquet de dix lignes
 '',
 '',
 '',
-'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS']
+'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
+'B']
+level_map=[
+'WTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+'W                                                                                                             ',
+'W                                                                                                             ',
+'W                                                    WWWW                                                     ',                                                                                                                
+'W                                                    W                                                        ',
+'W                                                    W                                                        ',
+'W                                                    W                                                        ',
+'W P                                                  W                                                        ',
+'W                                   W                W                                                        ',
+'W                                   W                W                                                        ',
+'W                                   W                W                                                        ',
+'W                      W            W                W                                                        ',
+'GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
+'WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
+'',
+'',
+'',
+'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
+'B']   
+
 
 
 tile_size = 48

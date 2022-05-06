@@ -7,13 +7,15 @@ import time
 import sys
 
 class Level:
-    def __init__(self, level_data, surface):
+    def __init__(self, level_data, surface, spawn):
         self.display_surface = surface
-        self.setup(level_data)
+        self.spawn = spawn
+        self.setup(level_data, spawn)
         self.world_shift = 0
         
         
-    def setup(self, layout):
+        
+    def setup(self, layout, spawn):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         for row_index,row in enumerate(layout):
@@ -41,8 +43,13 @@ class Level:
                 if cell == 'P':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    player_sprite = Player((x,y))
+                    if spawn == "null":
+                        player_sprite = Player((x,y))
+                        self.spawn = [player_sprite.rect.x, player_sprite.rect.y]
+                    else:
+                        player_sprite = Player((spawn[0],spawn[1]))
                     self.player.add(player_sprite)
+                    print(self.spawn)
                 if cell == 'S':
                     x = col_index * tile_size
                     y = row_index * tile_size
@@ -84,17 +91,17 @@ class Level:
                     #Death animation
                     player.status = 'death'
                     if player.death == 20:
-                        main()
+                        main(self.spawn)
 
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
                     if sprite.climb:
-                        player.direction.y = -0.8
+                        player.direction.y = 1
                         player.double_jump = 1
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
                     if sprite.climb:
-                        player.direction.y = -0.8
+                        player.direction.y = 1
                         player.double_jump = 1
             else: player.gravity = 0.8
                     
@@ -133,7 +140,7 @@ class Level:
         self.vertical_mouvement_collision()
         self.player.draw(self.display_surface)
 
-def main():
+def main(spawn):
     pygame.init()
     '''
     width = input("Width (\"full\" to get fullscreen):")
@@ -146,7 +153,7 @@ def main():
     '''
     screen = pygame.display.set_mode((1200, 700))
     clock = pygame.time.Clock()
-    level = Level(level_map_2, screen)
+    level = Level(level_map, screen, spawn)
     width, height = screen.get_size()
     bg = pygame.image.load("./alien/background.jpg")
     
@@ -164,4 +171,5 @@ def main():
         clock.tick(60)
         
 if __name__ == "__main__":
-    main()
+    spawn = "null"
+    main(spawn)
