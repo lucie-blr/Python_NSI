@@ -31,7 +31,7 @@ level_map=[
 '   W                                                    W                                                        ',
 '   W                                                    W                                                        ',
 '   W P                                                  W                                                        ',
-'   W                                   W                W                                                        ',
+'   W                                                    W                                                        ',
 '   W                                   W                W                                                        ',
 '   W                                   W                W                                                        ',
 '   W L      L      S      W            W                W                                                        ',
