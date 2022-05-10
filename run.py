@@ -122,7 +122,7 @@ def main():
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
 					if w <= mouse[0] <= w+200 and h-10 <= mouse[1] <= h+50:			#PLay
-						select.main()
+						main2.main("null")
 					if w <= mouse[0] <= w+200 and h+50-10 <= mouse[1] <= h+100:		#settings
 						gameset.main()
 					if w <= mouse[0] <= w+200 and h+100-10 <= mouse[1] <= h+150:	#exit
