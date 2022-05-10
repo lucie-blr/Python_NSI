@@ -152,17 +152,13 @@ def main():
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
 					if w_center_200-170 <= mouse[0] <= w_center_200-170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50:	#1920
-						pygame.quit()
-						run.main()
+						print("1")
 					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: 		#1280
-						pygame.quit()
-						run.main()
+						print("1")
 					if w_center_200+170 <= mouse[0] <= w_center_200+170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: #1000
-						pygame.quit()
-						run.main()
+						print("1")
 					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-50-10 <= mouse[1] <= h_bottom-50+50:	#Fullscreen
-						pygame.quit()
-						run.main()
+						print("1")
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
 
