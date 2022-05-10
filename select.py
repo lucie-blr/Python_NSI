@@ -90,49 +90,56 @@ def main():
 	# button position
 	w_center_200 = (WIDTH/2)-100	#widht for 200px button, center
 	h_bottom = HEIGHT*(2/3)			#height bottom
-	"""
-	w_center_150 = (WIDTH/2)-75		#widht for 150px button, center
-	h_center = HEIGHT/2				#height center
-	"""	
 
 	#button position
-	if WIDTH == 1920 or FULL == "True":
-		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
-		w2, h2 = WIDTH, HEIGHT
-		w3, h3 = WIDTH, HEIGHT
-		w4, h4 = WIDTH, HEIGHT
-		w5, h5 = WIDTH, HEIGHT
-		w6, h6 = WIDTH, HEIGHT
-	elif WIDTH == 1280:
-		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
-		w2, h2 = WIDTH, HEIGHT
-		w3, h3 = WIDTH, HEIGHT
-		w4, h4 = WIDTH, HEIGHT
-		w5, h5 = WIDTH, HEIGHT
-		w6, h6 = WIDTH, HEIGHT
-	elif WIDTH == 1000:
-		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
-		w2, h2 = WIDTH, HEIGHT
-		w3, h3 = WIDTH, HEIGHT
-		w4, h4 = WIDTH, HEIGHT
-		w5, h5 = WIDTH, HEIGHT
-		w6, h6 = WIDTH, HEIGHT
+	if WIDTH == 1920 or FULL == "True":		#for 1920x1080 screen
+		w1= WIDTH-((7/8)*WIDTH)					#first column
+		w2= WIDTH/2-100							#second column
+		w3= WIDTH-((2/8)*WIDTH)					#third column
+		h1 = HEIGHT-(HEIGHT-150)				#First lign
+		h2 = HEIGHT-(HEIGHT-350)				#second line
+		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
+	elif WIDTH == 1280:						#for 1280x720 screen
+		w1= WIDTH-((7/8)*WIDTH)					#first column
+		w2= WIDTH/2-100							#second column
+		w3= WIDTH-((2/8)*WIDTH)					#third column
+		h1 = HEIGHT-(HEIGHT-150)				#First lign
+		h2 = HEIGHT-(HEIGHT-350)				#second line
+		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
+	elif WIDTH == 1000:						#for 1000x600 screen
+		w1= WIDTH-((7/8)*WIDTH)					#first column
+		w2= WIDTH/2-100							#second column
+		w3= WIDTH-((2/8)*WIDTH)					#third column
+		h1 = HEIGHT-(HEIGHT-150)				#First lign
+		h2 = HEIGHT-(HEIGHT-350)				#second line
+		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
 
 	#button
-	button_1 = Button('Level 1', 150, 40, (w1, h1), 5)
-	button_2 = Button('Level 2', 150, 40, (w_center_200, h_bottom), 5)
-	button_3 = Button('Level 3', 150, 40, (w_center_200+170, h_bottom), 5)
-	button_4 = Button('Level 4', 150, 40, (w_center_200, h_bottom-50), 5)
-	button_5 = Button('Level 5', 150, 40, (w_center_200, h_bottom-50), 5)
-	button_6 = Button('Level 6', 150, 40, (w_center_200, h_bottom-50), 5)
 	back_button = Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
+
+	def img():
+		#image level (button)
+		level_1 = pygame.image.load(r'./level-image/1.png')	#image level 1
+		level_2 = pygame.image.load(r'./level-image/2.png')	#image level 1
+		level_3 = pygame.image.load(r'./level-image/3.png')	#image level 1
+		level_4 = pygame.image.load(r'./level-image/4.png')	#image level 1
+		level_5 = pygame.image.load(r'./level-image/5.png')	#image level 1
+		level_6 = pygame.image.load(r'./level-image/6.png')	#image level 1
+		#show
+		screen.blit(bg, (0, 0))
+		screen.blit(level_1, (w1, h1))
+		screen.blit(level_2, (w2, h1))
+		screen.blit(level_3, (w3, h1))
+		screen.blit(level_4, (w1, h2))
+		screen.blit(level_5, (w2, h2))
+		screen.blit(level_6, (w3, h2))
 
 	# Text
 	white = (255,255,255)
 	text = text_font.render('Select level', True, white)
 	# create a rectangular object for the text
 	textRect = text.get_rect()
-	textRect.center = (WIDTH // 2, HEIGHT-(HEIGHT-150))
+	textRect.center = (wt, ht)
 
 	# transform bg size for every screen
 	if WIDTH == 1920 or FULL == "True":		#for 1920x1080 and Fullscreen
@@ -143,7 +150,7 @@ def main():
 		bg = pygame.transform.scale(bg, (1000, 600))
 						
 	while True:
-		screen.blit(bg, (0, 0))
+		img()	#show level image
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
@@ -151,14 +158,18 @@ def main():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
-					if w_center_200-170 <= mouse[0] <= w_center_200-170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50:	#1920
-						print("1")
-					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: 		#1280
-						print("1")
-					if w_center_200+170 <= mouse[0] <= w_center_200+170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: #1000
-						print("1")
-					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-50-10 <= mouse[1] <= h_bottom-50+50:	#Fullscreen
-						print("1")
+					if w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+113:	#1920
+						main2.main(1)
+					if w2 <= mouse[0] <= w2+200 and h1 <= mouse[1] <= h1+113:	#1920
+						main2.main(2)
+					if w3 <= mouse[0] <= w3+200 and h1 <= mouse[1] <= h1+113:	#1920
+						main2.main(3)
+					if w1 <= mouse[0] <= w1+200 and h2 <= mouse[1] <= h2+113:	#1920
+						main2.main(4)
+					if w2 <= mouse[0] <= w2+200 and h2 <= mouse[1] <= h2+113:	#1920
+						main2.main(5)
+					if w3 <= mouse[0] <= w3+200 and h2 <= mouse[1] <= h2+113:	#1920
+						main2.main(6)
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
 
