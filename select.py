@@ -97,21 +97,21 @@ def main():
 
 	#button position
 	if WIDTH == 1920 or FULL == "True":
-		w1, h1 = WIDTH, HEIGHT
+		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
 		w2, h2 = WIDTH, HEIGHT
 		w3, h3 = WIDTH, HEIGHT
 		w4, h4 = WIDTH, HEIGHT
 		w5, h5 = WIDTH, HEIGHT
 		w6, h6 = WIDTH, HEIGHT
 	elif WIDTH == 1280:
-		w1, h1 = WIDTH, HEIGHT
+		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
 		w2, h2 = WIDTH, HEIGHT
 		w3, h3 = WIDTH, HEIGHT
 		w4, h4 = WIDTH, HEIGHT
 		w5, h5 = WIDTH, HEIGHT
 		w6, h6 = WIDTH, HEIGHT
 	elif WIDTH == 1000:
-		w1, h1 = WIDTH, HEIGHT
+		w1, h1 = WIDTH-((2/3)*WIDTH), HEIGHT((2/3)*HEIGHT)
 		w2, h2 = WIDTH, HEIGHT
 		w3, h3 = WIDTH, HEIGHT
 		w4, h4 = WIDTH, HEIGHT
@@ -119,7 +119,7 @@ def main():
 		w6, h6 = WIDTH, HEIGHT
 
 	#button
-	button_1 = Button('Level 1', 150, 40, (w_center_200-170, h_bottom), 5)
+	button_1 = Button('Level 1', 150, 40, (w1, h1), 5)
 	button_2 = Button('Level 2', 150, 40, (w_center_200, h_bottom), 5)
 	button_3 = Button('Level 3', 150, 40, (w_center_200+170, h_bottom), 5)
 	button_4 = Button('Level 4', 150, 40, (w_center_200, h_bottom-50), 5)
@@ -129,7 +129,7 @@ def main():
 
 	# Text
 	white = (255,255,255)
-	text = text_font.render('sheeesh', True, white)
+	text = text_font.render('Select level', True, white)
 	# create a rectangular object for the text
 	textRect = text.get_rect()
 	textRect.center = (WIDTH // 2, HEIGHT-(HEIGHT-150))
