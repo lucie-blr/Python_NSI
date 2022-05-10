@@ -89,18 +89,42 @@ def main():
 
 	# button position
 	w_center_200 = (WIDTH/2)-100	#widht for 200px button, center
-	w_center_150 = (WIDTH/2)-75		#widht for 150px button, center
-
-	h_center = HEIGHT/2				#height center
 	h_bottom = HEIGHT*(2/3)			#height bottom
+	"""
+	w_center_150 = (WIDTH/2)-75		#widht for 150px button, center
+	h_center = HEIGHT/2				#height center
+	"""	
+
+	#button position
+	if WIDTH == 1920 or FULL == "True":
+		w1, h1 = WIDTH, HEIGHT
+		w2, h2 = WIDTH, HEIGHT
+		w3, h3 = WIDTH, HEIGHT
+		w4, h4 = WIDTH, HEIGHT
+		w5, h5 = WIDTH, HEIGHT
+		w6, h6 = WIDTH, HEIGHT
+	elif WIDTH == 1280:
+		w1, h1 = WIDTH, HEIGHT
+		w2, h2 = WIDTH, HEIGHT
+		w3, h3 = WIDTH, HEIGHT
+		w4, h4 = WIDTH, HEIGHT
+		w5, h5 = WIDTH, HEIGHT
+		w6, h6 = WIDTH, HEIGHT
+	elif WIDTH == 1000:
+		w1, h1 = WIDTH, HEIGHT
+		w2, h2 = WIDTH, HEIGHT
+		w3, h3 = WIDTH, HEIGHT
+		w4, h4 = WIDTH, HEIGHT
+		w5, h5 = WIDTH, HEIGHT
+		w6, h6 = WIDTH, HEIGHT
 
 	#button
-	button_1 = Button('Level 1', 150, 40, (w_center_150-170, h_center), 5)
-	button_2 = Button('Level 2', 150, 40, (w_center_150, h_center), 5)
-	button_3 = Button('Level 3', 150, 40, (w_center_150+170, h_center), 5)
-	button_4 = Button('Level 4', 150, 40, (w_center_150, h_bottom-50), 5)
-	button_5 = Button('Level 5', 150, 40, (w_center_150, h_bottom-50), 5)
-	button_6 = Button('Level 6', 150, 40, (w_center_150, h_bottom-50), 5)
+	button_1 = Button('Level 1', 150, 40, (w_center_200-170, h_bottom), 5)
+	button_2 = Button('Level 2', 150, 40, (w_center_200, h_bottom), 5)
+	button_3 = Button('Level 3', 150, 40, (w_center_200+170, h_bottom), 5)
+	button_4 = Button('Level 4', 150, 40, (w_center_200, h_bottom-50), 5)
+	button_5 = Button('Level 5', 150, 40, (w_center_200, h_bottom-50), 5)
+	button_6 = Button('Level 6', 150, 40, (w_center_200, h_bottom-50), 5)
 	back_button = Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
 
 	# Text
@@ -127,16 +151,16 @@ def main():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
-					if w_center_150-170 <= mouse[0] <= w_center_150-170+150 and h_center-10 <= mouse[1] <= h_center+50:	#1920
+					if w_center_200-170 <= mouse[0] <= w_center_200-170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50:	#1920
 						pygame.quit()
 						run.main()
-					if w_center_150 <= mouse[0] <= w_center_150+150 and h_center-10 <= mouse[1] <= h_center+50: 		#1280
+					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: 		#1280
 						pygame.quit()
 						run.main()
-					if w_center_150+170 <= mouse[0] <= w_center_150+170+150 and h_center-10 <= mouse[1] <= h_center+50: #1000
+					if w_center_200+170 <= mouse[0] <= w_center_200+170+150 and h_bottom-10 <= mouse[1] <= h_bottom+50: #1000
 						pygame.quit()
 						run.main()
-					if w_center_150 <= mouse[0] <= w_center_150+150 and h_bottom-50-10 <= mouse[1] <= h_bottom-50+50:	#Fullscreen
+					if w_center_200 <= mouse[0] <= w_center_200+150 and h_bottom-50-10 <= mouse[1] <= h_bottom-50+50:	#Fullscreen
 						pygame.quit()
 						run.main()
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
