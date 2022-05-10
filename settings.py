@@ -24,8 +24,8 @@ level_map_2 =[ #le joueur voit par paquet de dix lignes
 'B']
 level_map=[
 '   WTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-'   W                                                                                                             ',
-'   W                                                                                                             ',
+'                                                                                                                 ',
+'   W                                                     L                                                       ',
 '   W                                                    WWWW                                                     ',                                                                                                                
 '   W                                                    W                                                        ',
 '   W                                                    W                                                        ',
@@ -34,7 +34,7 @@ level_map=[
 '   W                                   W                W                                                        ',
 '   W                                   W                W                                                        ',
 '   W                                   W                W                                                        ',
-'   W      C        S      W            W                W                          C                              ',
+'   W L      L      S      W            W                W                                                        ',
 '   GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
 '   EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
 '   WGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG',
