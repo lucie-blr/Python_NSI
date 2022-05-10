@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.direction = pygame.math.Vector2(0,0)
         self.speed = 5
         self.gravity = 0.8
-        self.jump_speed = -16
+        self.jump_speed = -12
         self.double_jump = 1
         self.time = time.time()            
     
@@ -38,14 +38,15 @@ class Player(pygame.sprite.Sprite):
     def animate(self):
         
         animation = self.animations[self.status]
-        
         if self.status == 'death':
-            
-            self.image = animation[int(self.death)]
-            time.sleep(0.02)
-            self.death = self.death + 1
-            self.direction.x = 0
-            self.direction.y = 0
+            print(self.death)
+            if self.death < 20:
+                self.image = animation[int(self.death)]
+                time.sleep(0.02)
+                
+                self.death = self.death + 1
+                self.direction.x = 0
+                self.direction.y = 0
             return
         elif self.death == 0:
             self.frame_index += self.animation_speed
@@ -53,22 +54,23 @@ class Player(pygame.sprite.Sprite):
                 self.frame_index = 0
             
             image = animation[int(self.frame_index)]
+        
             if self.facing_right:
                 flipped_image = pygame.transform.flip(image, True, False)
                 self.image = flipped_image
             else:
-                
                 self.image = image
     
     def get_status(self):
-        if self.direction.y < 0:
-            self.status = 'jump'
-        elif self.direction.y > 1:
-            self.status = 'fall'
-        elif self.direction.x != 0:
-            self.status = 'run'
-        else:
-            self.status = 'idle'
+        if self.death == 0:
+            if self.direction.y < 0:
+                self.status = 'jump'
+            elif self.direction.y > 1:
+                self.status = 'fall'
+            elif self.direction.x != 0:
+                self.status = 'run'
+            else:
+                self.status = 'idle'
     
     def get_input(self):
         keys = pygame.key.get_pressed()
