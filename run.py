@@ -1,5 +1,4 @@
 import pygame, sys, json
-import main2
 import gameset
 import select
 

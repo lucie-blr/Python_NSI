@@ -1,5 +1,6 @@
 import pygame, sys, json
 import run
+import main2
 
 def main():
 	class Button:
@@ -94,17 +95,17 @@ def main():
 	h_bottom = HEIGHT*(2/3)			#height bottom
 
 	#button
-	button_1 = Button('1920x1080', 150, 40, (w_center_150-170, h_center), 5)
-	button_2 = Button('1280x720', 150, 40, (w_center_150, h_center), 5)
-	button_3 = Button('1000x600', 150, 40, (w_center_150+170, h_center), 5)
-	button_4 = Button('Fullscreen', 150, 40, (w_center_150, h_bottom-50), 5)
-	button_5 = Button('Fullscreen', 150, 40, (w_center_150, h_bottom-50), 5)
-	button_6 = Button('Fullscreen', 150, 40, (w_center_150, h_bottom-50), 5)
+	button_1 = Button('Level 1', 150, 40, (w_center_150-170, h_center), 5)
+	button_2 = Button('Level 2', 150, 40, (w_center_150, h_center), 5)
+	button_3 = Button('Level 3', 150, 40, (w_center_150+170, h_center), 5)
+	button_4 = Button('Level 4', 150, 40, (w_center_150, h_bottom-50), 5)
+	button_5 = Button('Level 5', 150, 40, (w_center_150, h_bottom-50), 5)
+	button_6 = Button('Level 6', 150, 40, (w_center_150, h_bottom-50), 5)
 	back_button = Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
 
 	# Text
 	white = (255,255,255)
-	text = text_font.render('Chose screen size', True, white)
+	text = text_font.render('sheeesh', True, white)
 	# create a rectangular object for the text
 	textRect = text.get_rect()
 	textRect.center = (WIDTH // 2, HEIGHT-(HEIGHT-150))
