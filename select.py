@@ -118,14 +118,40 @@ def main():
 	back_button = Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
 
 	def img():
+		with open("data.json", "r") as f:	#config size screen
+			data = json.load(f)
+			map1 = data["unlock"][0]["map1"]
+			map2 = data["unlock"][0]["map2"]
+			map3 = data["unlock"][0]["map3"]
+			map4 = data["unlock"][0]["map4"]
+			map5 = data["unlock"][0]["map5"]
+			map6 = data["unlock"][0]["map6"]
 		#image level (button)
-		level_1 = pygame.image.load(r'./level-image/1.png')	#image level 1
-		level_2 = pygame.image.load(r'./level-image/2.png')	#image level 1
-		level_3 = pygame.image.load(r'./level-image/3.png')	#image level 1
-		level_4 = pygame.image.load(r'./level-image/4.png')	#image level 1
-		level_5 = pygame.image.load(r'./level-image/5.png')	#image level 1
-		level_6 = pygame.image.load(r'./level-image/6.png')	#image level 1
-		#show
+		if map1 == "True":
+			level_1 = pygame.image.load(r'./level-image/1.png')	#image level 1
+		else:
+			level_1 = pygame.image.load(r'./level-image/1_lock.png')	#image level 1
+		if map2 == "True":
+			level_2 = pygame.image.load(r'./level-image/2.png')	#image level 2
+		else:
+			level_2 = pygame.image.load(r'./level-image/2_lock.png')	#image level 2
+		if map3 == "True":
+			level_3 = pygame.image.load(r'./level-image/3.png')	#image level 3
+		else:
+			level_3 = pygame.image.load(r'./level-image/3_lock.png')	#image level 3
+		if map4 == "True":
+			level_4 = pygame.image.load(r'./level-image/4.png')	#image level 4
+		else:
+			level_4 = pygame.image.load(r'./level-image/4_lock.png')	#image level 4
+		if map5 == "True":
+			level_5 = pygame.image.load(r'./level-image/5.png')	#image level 5
+		else:
+			level_5 = pygame.image.load(r'./level-image/5_lock.png')	#image level 5
+		if map6 == "True":
+			level_6 = pygame.image.load(r'./level-image/6.png')	#image level 6
+		else:
+			level_6 = pygame.image.load(r'./level-image/6_lock.png')	#image level 6
+		#show | load image lock and unlock
 		screen.blit(bg, (0, 0))
 		screen.blit(level_1, (w1, h1))
 		screen.blit(level_2, (w2, h1))
@@ -158,18 +184,32 @@ def main():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
-					if w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+113:	#1920
-						main2.main(1)
-					if w2 <= mouse[0] <= w2+200 and h1 <= mouse[1] <= h1+113:	#1920
-						main2.main(2)
-					if w3 <= mouse[0] <= w3+200 and h1 <= mouse[1] <= h1+113:	#1920
-						main2.main(3)
-					if w1 <= mouse[0] <= w1+200 and h2 <= mouse[1] <= h2+113:	#1920
-						main2.main(4)
-					if w2 <= mouse[0] <= w2+200 and h2 <= mouse[1] <= h2+113:	#1920
-						main2.main(5)
-					if w3 <= mouse[0] <= w3+200 and h2 <= mouse[1] <= h2+113:	#1920
-						main2.main(6)
+					with open("data.json", "r") as f:	#config size screen
+						data = json.load(f)
+						map1 = data["unlock"][0]["map1"]
+						map2 = data["unlock"][0]["map2"]
+						map3 = data["unlock"][0]["map3"]
+						map4 = data["unlock"][0]["map4"]
+						map5 = data["unlock"][0]["map5"]
+						map6 = data["unlock"][0]["map6"]
+					if map1 == "True":	#verif unlock level
+						if w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+113:	#verif click level
+							main2.main(1)	#run level
+					if map2 == "True":	#verif unlock level
+						if w2 <= mouse[0] <= w2+200 and h1 <= mouse[1] <= h1+113:	#verif click level
+							main2.main(2)	#run level
+					if map3 == "True":	#verif unlock level
+						if w3 <= mouse[0] <= w3+200 and h1 <= mouse[1] <= h1+113:	##verif click level
+							main2.main(3)	#run level
+					if map4 == "True":	#verif unlock level
+						if w1 <= mouse[0] <= w1+200 and h2 <= mouse[1] <= h2+113:	#verif click level
+							main2.main(4)	#run level
+					if map5 == "True":	#verif unlock level
+						if w2 <= mouse[0] <= w2+200 and h2 <= mouse[1] <= h2+113:	#verif click level
+							main2.main(5)	#run level
+					if map6 == "True":	#verif unlock level
+						if w3 <= mouse[0] <= w3+200 and h2 <= mouse[1] <= h2+113:	#verif click level
+							main2.main(6)	#run level
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
 
