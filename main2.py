@@ -1,7 +1,7 @@
 import pygame
 from tile import *
 from settings import *
-from player import Player
+from player import Player, Bullet
 import time
 import sys
 import run
@@ -22,7 +22,7 @@ class Level:
         sign_index = 0
         self.layout_index = layout_index
         layout = levelmap[layout_index]
-        
+        self.bullet = pygame.sprite.GroupSingle()
         
         
         
@@ -79,7 +79,11 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_end((x,y),tile_size)
                     self.tiles.add(tile)
-        
+                if cell == 'B':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    player_sprite = Bullet((x,y))
+                    self.bullet.add(player_sprite)
     def scroll_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx 
@@ -216,10 +220,18 @@ class Level:
                                 player.rect.top = sprite.rect.bottom
                                 player.direction.y = 0
                     
+    def bullet_update(self):
+        player = self.player.sprite
+        bullet = self.bullet.sprite 
+        if player.bullet and bullet.Ask_bullet:
+            bullet.bullet(player)   
     
     def run(self,screen, level_map):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
+        self.bullet_update()
+        self.bullet.update()
+        self.bullet.draw(self.display_surface)
         self.scroll_x()
         
         self.player.update()
