@@ -250,6 +250,9 @@ class Level:
         textRect.center = (WIDTH - (WIDTH-80) , HEIGHT - (HEIGHT-20))
         screen.blit(text, textRect)
 
+    def menu():
+        print("ziou")
+
 def main(level_map):
     pygame.init()
     with open("data.json", "r") as f:	#config size screen
@@ -280,7 +283,7 @@ def main(level_map):
                 
         screen.fill('black')
         screen.blit(bg,(0,0))
-        level.run(screen, level_map) 
+        level.run(screen, level_map)
         
         pygame.display.update()
         clock.tick(60)
