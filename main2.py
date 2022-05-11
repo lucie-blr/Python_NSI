@@ -372,7 +372,7 @@ def main(level_map):
     RUNNING, PAUSE = 0, 1
     state = RUNNING
 
-    pause_text = pygame.font.SysFont('Consolas', 32).render('Pause', True, pygame.color.Color('White'))
+    pause_text = pygame.font.SysFont('Consolas', 50).render('Pause', True, pygame.color.Color('White'))
 
     while True:
         mouse = pygame.mouse.get_pos()
@@ -383,6 +383,8 @@ def main(level_map):
             if event.type == pygame.KEYDOWN:
                 if state == RUNNING:
                     if event.key == pygame.K_ESCAPE:
+                        pygame.image.save(screen,"./cache/pause-screen-cache.png")
+                        cache = pygame.image.load("./cache/pause-screen-cache.png")
                         state = PAUSE
                 else:
                     if event.key == pygame.K_ESCAPE:
@@ -399,10 +401,13 @@ def main(level_map):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
                         if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
+                            pygame.image.save(screen,"./cache/pause-screen-cache.png")
+                            cache = pygame.image.load("./cache/pause-screen-cache.png")
                             state = PAUSE
                             time.sleep(0.3)
 
             elif state == PAUSE:
+                screen.blit(cache, (0,0))
                 screen.blit(pause_text, (WIDTH/2-48, 100))     #text "pause"
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))   #pause button
                 buttons_draw(screen)	#show button
