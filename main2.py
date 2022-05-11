@@ -11,18 +11,21 @@ class Level:
     def __init__(self, level_data, surface, spawn):
         self.display_surface = surface
         self.spawn = spawn
-        self.setup(level_data)
+        self.setup(level_data, surface)
         self.world_shift = 0
         
         
-        
-    def setup(self, layout_index):
+    def setup(self, layout_index, screen):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         messages = levelsign[layout_index]
         sign_index = 0
         self.layout_index = layout_index
         layout = levelmap[layout_index]
+        
+        
+        
+        
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
                 if cell == 'T':
@@ -224,10 +227,36 @@ class Level:
         self.vertical_mouvement_collision(screen, level_map)
         self.player.draw(self.display_surface)
         
+        with open("data.json", "r") as f:	#config size screen
+            data = json.load(f)
+            WIDTH = data["WIDTH"]
+            HEIGHT = data["HEIGHT"]
+        
+        # Text
+        text_font = pygame.font.Font(None, 22)	#Text Font
+        white = (255,255,255)
+        text = text_font.render('v 1.0', True, white)
+        # create a rectangular object for the text
+        textRect = text.get_rect()
+        textRect.center = (WIDTH-40 , HEIGHT-20)
+        screen.blit(text, textRect)
+        
+        # Text
+        text_font = pygame.font.Font(None, 40)	#Text Font
+        white = (255,255,255)
+        text = text_font.render(f'Level {level_map}', True, white)
+        # create a rectangular object for the text
+        textRect = text.get_rect()
+        textRect.center = (WIDTH - (WIDTH-80) , HEIGHT - (HEIGHT-20))
+        screen.blit(text, textRect)
 
 def main(level_map):
     pygame.init()
-    screen = pygame.display.set_mode((1200, 700))
+    with open("data.json", "r") as f:	#config size screen
+            data = json.load(f)
+            WIDTH = data["WIDTH"]
+            HEIGHT = data["HEIGHT"]
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     clock = pygame.time.Clock()
     spawn = "null"
     level = Level(level_map, screen, spawn)
