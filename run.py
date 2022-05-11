@@ -12,7 +12,6 @@ def main():
 	pygame.display.set_caption('NekoDarkLand')	#window title
 	clock = pygame.time.Clock()		#FPS
 
-	gui_font = pygame.font.Font(None, 30)	#Font
 	text_font = pygame.font.Font(None, 22)	#Text Font
 
 	logo = pygame.image.load(r'logo.png')	#banner
