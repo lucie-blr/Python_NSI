@@ -1,6 +1,6 @@
 import pygame, os
 
-level_map_2 =[ #le joueur voit par paquet de dix lignes
+levelmap=[  [ #le joueur voit par paquet de dix lignes
 'WTTTTTTTT    TTTTTTTTTTTTTTTTTTTT',
 'W       W    W                   ',
 'W       W    W          W        ',
@@ -21,8 +21,8 @@ level_map_2 =[ #le joueur voit par paquet de dix lignes
 '',
 '',
 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
-'B']
-level_map=[
+'B'],
+[
 '   WTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
 '                                                                                                                 ',
 '   W                                                     L                                                       ',
@@ -42,7 +42,7 @@ level_map=[
 '   ',
 '   ',
 'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
-'B']   
+'B']   ]
 
 
 

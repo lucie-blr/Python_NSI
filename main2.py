@@ -9,16 +9,17 @@ class Level:
     def __init__(self, level_data, surface, spawn):
         self.display_surface = surface
         self.spawn = spawn
-        self.setup(level_data, spawn)
+        self.setup(level_data)
         self.world_shift = 0
         
         
         
-    def setup(self, layout, spawn):
+    def setup(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         messages = ["Keep calm, but the spikes can kill you.","Press directional keys to move.","You can also make double jump.","As you can double jump, you can climb the walls."]
         sign_index = 0
+        layout = levelmap[layout]
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
                 if cell == 'T':
@@ -174,7 +175,7 @@ class Level:
         self.player.draw(self.display_surface)
         
 
-def main(spawn):
+def main(level_map):
     pygame.init()
     '''
     width = input("Width (\"full\" to get fullscreen):")
@@ -187,6 +188,7 @@ def main(spawn):
     '''
     screen = pygame.display.set_mode((1200, 700))
     clock = pygame.time.Clock()
+    spawn = "null"
     level = Level(level_map, screen, spawn)
     width, height = screen.get_size()
     bg = pygame.image.load("./alien/background.jpg")
