@@ -358,13 +358,13 @@ def main(level_map):
     pause = pygame.image.load("./game-image/pause.png")
 
 	#button position
-    w1= WIDTH/2					#column button
-    h1 = HEIGHT/2-100			#First lign (resume)
+    w1= WIDTH/2-100				#column button
+    h1 = HEIGHT/2			#First lign (resume)
 
     #buttons
     button1 = button.Button('Resume', 200, 40, (w1, h1), 5)      #resume
-    button2 = button.Button('Menu', 200, 40, (w1, h1+50), 5)	    #menu redirection
-    button3 = button.Button('Exit', 200, 40, (w1, h1+100), 5)	#exit game
+    button2 = button.Button('Menu', 200, 40, (w1, h1+60), 5)	    #menu redirection
+    button3 = button.Button('Exit', 200, 40, (w1, h1+120), 5)	#exit game
     buttons.append(button1)
     buttons.append(button2)
     buttons.append(button3)
@@ -405,13 +405,18 @@ def main(level_map):
             elif state == PAUSE:
                 screen.blit(pause_text, (WIDTH/2-48, 100))     #text "pause"
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))   #pause button
-                # buttons_draw(screen)	#show button
+                buttons_draw(screen)	#show button
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
-                        if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
+                        if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55 or w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+40: #pause buton and resum
                             state = RUNNING
                             time.sleep(0.3)
+                        if w1 <= mouse[0] <= w1+200 and h1+60 <= mouse[1] <= h1+60+40: #menu
+                            run.main()
+                        if w1 <= mouse[0] <= w1+200 and h1+120 <= mouse[1] <= h1+120+40: #menu
+                            pygame.quit()
+                            sys.exit()
 
             pygame.display.update()
             clock.tick(60)
