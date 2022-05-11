@@ -1,6 +1,6 @@
 import pygame
 
-gui_font = pygame.font.Font(None, 30)	#Font
+
 buttons = []
 
 class Button():
@@ -19,13 +19,13 @@ class Button():
 		self.bottom_rect = pygame.Rect(pos, (width, height))
 		self.bottom_color = '#014A4A'
 		#text
+		self.gui_font = pygame.font.Font(None, 30)	#Font
 		self.text = text
-		self.text_surf = gui_font.render(text, True, '#FFFFFF')
-        self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
-        buttons.append(self)
+		self.text_surf = self.gui_font.render(text, True, '#FFFFFF')
+		self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
 	def change_text(self, newtext):
-		self.text_surf = gui_font.render(newtext, True, '#FFFFFF')
+		self.text_surf = self.gui_font.render(newtext, True, '#FFFFFF')
 		self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
 	def draw(self, screen):
@@ -59,6 +59,6 @@ class Button():
 			self.dynamic_elecation = self.elevation
 			self.top_color = '#015E5E'
 
-def buttons_draw():
+def buttons_draw(screen):
     for b in buttons:
-        b.draw()
+        b.draw(screen)
