@@ -111,7 +111,7 @@ class Tile_end(pygame.sprite.Sprite):
 class Tile_key(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/sign.png")
+        self.image = pygame.image.load("./alien/key.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = False
@@ -124,7 +124,7 @@ class Tile_key(pygame.sprite.Sprite):
 class Tile_door(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/sign.png")
+        self.image = pygame.image.load("./alien/door.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = False
