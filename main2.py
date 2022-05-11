@@ -293,14 +293,6 @@ class Level:
             WIDTH = data["WIDTH"]
             HEIGHT = data["HEIGHT"]
         
-        # Text
-        text_font = pygame.font.Font(None, 22)	#Text Font
-        white = (255,255,255)
-        text = text_font.render('v 1.0', True, white)
-        # create a rectangular object for the text
-        textRect = text.get_rect()
-        textRect.center = (WIDTH-40 , HEIGHT-20)
-        screen.blit(text, textRect)
         
         # Text
         text_font = pygame.font.Font(None, 40)	#Text Font
@@ -320,8 +312,6 @@ class Level:
         textRect.center = (WIDTH - (WIDTH-300) , HEIGHT - (HEIGHT-20))
         screen.blit(text, textRect)
 
-    def menu():
-        print("ziou")
 
 def main(level_map):
     pygame.init()
@@ -342,21 +332,28 @@ def main(level_map):
     clock = pygame.time.Clock()
     spawn = "null"
     level = Level(level_map, screen, spawn)
-    width, height = screen.get_size()
+
     bg = pygame.image.load("./alien/background.jpg")
+    pause = pygame.image.load("./game-image/pause.png")
     
     RUNNING, PAUSE = 0, 1
     state = RUNNING
 
+    pause_text = pygame.font.SysFont('Consolas', 32).render('Pause', True, pygame.color.Color('White'))
+
     while True:
-        """
+        mouse = pygame.mouse.get_pos()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p: state = PAUSE
-                if event.key == pygame.K_s: state = RUNNING
+                if state == RUNNING:
+                    if event.key == pygame.K_ESCAPE:
+                        state = PAUSE
+                else:
+                    if event.key == pygame.K_ESCAPE:
+                        state = RUNNING
         else:
             screen.fill((0, 0, 0))
 
@@ -364,26 +361,26 @@ def main(level_map):
                 screen.fill('black')
                 screen.blit(bg,(0,0))
                 level.run(screen, level_map)
+                screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if pygame.mouse.get_pressed()[0]:	#Check click button and react
+                        if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
+                            state = PAUSE
+                            time.sleep(0.3)
 
             elif state == PAUSE:
-                run.main()
+                screen.blit(pause_text, (100, 100))
+                screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))
 
-            pygame.display.flip()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if pygame.mouse.get_pressed()[0]:	#Check click button and react
+                        if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
+                            state = RUNNING
+                            time.sleep(0.3)
+
             pygame.display.update()
             clock.tick(60)
-        """
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            
-        screen.fill('black')
-        screen.blit(bg,(0,0))
-        level.run(screen, level_map)
-            
-        pygame.display.update()
-        clock.tick(60)
-        
 
 if __name__ == "__main__":
     spawn = "null"
