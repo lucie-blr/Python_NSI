@@ -387,7 +387,8 @@ def main(level_map):
             b.draw()
 
     pygame.init()
-    
+    pygame.display.set_caption('NekoDarkLand')	#window title
+
     gui_font = pygame.font.Font(None, 30)	#Font
     buttons = []
     
@@ -411,6 +412,15 @@ def main(level_map):
 
     bg = pygame.image.load("./alien/background.jpg")
     pause = pygame.image.load("./game-image/pause.png")
+
+	#button position
+    w1= WIDTH/2					#column button
+    h1 = HEIGHT/2-100			#First lign (resume)
+
+    #buttons
+    button1 = Button('Resume', 200, 40, (w1, h1), 5)      #resume
+    button2 = Button('Menu', 200, 40, (w1, h1+50), 5)	    #menu redirection
+    button3 = Button('Exit', 200, 40, (w1, h1+100), 5)	#exit game
     
     RUNNING, PAUSE = 0, 1
     state = RUNNING
@@ -448,6 +458,7 @@ def main(level_map):
             elif state == PAUSE:
                 screen.blit(pause_text, (WIDTH/2-48, 100))     #text "pause"
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))   #pause button
+                # buttons_draw()	#show button
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
