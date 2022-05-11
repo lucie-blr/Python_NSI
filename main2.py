@@ -345,19 +345,46 @@ def main(level_map):
     width, height = screen.get_size()
     bg = pygame.image.load("./alien/background.jpg")
     
+    RUNNING, PAUSE = 0, 1
+    state = RUNNING
+
     while True:
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p: state = PAUSE
+                if event.key == pygame.K_s: state = RUNNING
+        else:
+            screen.fill((0, 0, 0))
+
+            if state == RUNNING:
+                screen.fill('black')
+                screen.blit(bg,(0,0))
+                level.run(screen, level_map)
+
+            elif state == PAUSE:
+                run.main()
+
+            pygame.display.flip()
+            pygame.display.update()
+            clock.tick(60)
+        """
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            
         screen.fill('black')
         screen.blit(bg,(0,0))
         level.run(screen, level_map)
-        
+            
         pygame.display.update()
         clock.tick(60)
         
+
 if __name__ == "__main__":
     spawn = "null"
     main(spawn)
