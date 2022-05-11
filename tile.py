@@ -1,16 +1,18 @@
 import pygame
 
-class Tile(pygame.sprite.Sprite):
-    def __init__(self, pos, size):
-        super().__init__()
-        self.image = pygame.image.load("./alien/tile.png")
-        self.rect = self.image.get_rect(topleft = pos)
-        self.damage = False
-        self.climb = False
-        self.sign = [False, "bonjour"]
+#Création des différents type de block avec des class
+
+class Tile(pygame.sprite.Sprite): #Création de la class
+    def __init__(self, pos, size): #Fonction qui se lance au lancement de la classe
+        super().__init__() 
+        self.image = pygame.image.load("./alien/tile.png") #Définition de l'image
+        self.rect = self.image.get_rect(topleft = pos) #Récupération de la position du coin en bas à gauche de l'image 
+        self.damage = False #Définition de si l'objet peut faire des dégats au joueur
+        self.climb = False #Définition de si l'objet peut être grimpé par le joueur
+        self.sign = [False, "bonjour"] #Définition de si l'objet est un panneau et du message de l'objet
          
-    def update(self, x_shift):
-        self.rect.x += x_shift
+    def update(self, x_shift): #Fonction qui change les variables de l'objet
+        self.rect.x += x_shift #Ajoute à la position en x de l'objet la vitesse de déplacement de la map
 
 class Tile_wall(pygame.sprite.Sprite):
     def __init__(self, pos, size):
