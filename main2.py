@@ -268,18 +268,6 @@ def main(level_map):
         height = int(input("Height :"))
         screen = pygame.display.set_mode((width, height))
     
-    with open("data.json", "r") as f:	#config size screen
-        data = json.load(f)
-        WIDTH = data["WIDTH"]
-        HEIGHT = data["HEIGHT"]
-        FULL = data["FULL"]
-
-    if FULL == "None":	
-        screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    else:
-        screen = pygame.display.set_mode()
-        WIDTH, HEIGHT = screen.get_size()
-
     clock = pygame.time.Clock()
     spawn = "null"
     level = Level(level_map, screen, spawn)
