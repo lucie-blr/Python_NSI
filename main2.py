@@ -156,7 +156,8 @@ class Level:
                         if sprite.door:
                             if player.key > 0:
                                 player.key -= 1
-                                sprite.rect.y = sprite.rect.y - 2000
+                                sprite.door = False
+                                sprite.image = sprite.open_image
                                 
                     
                     except AttributeError:
@@ -183,16 +184,21 @@ class Level:
                         
                         else:    
 
-                            if player.direction.x < 0:
-                                player.rect.left = sprite.rect.right
-                                if sprite.climb:
-                                    player.direction.y = 1
-                                    player.double_jump = 1
-                            elif player.direction.x > 0:
-                                player.rect.right = sprite.rect.left
-                                if sprite.climb:
-                                    player.direction.y = 1
-                                    player.double_jump = 1
+                            try:
+                                if sprite.open:
+                                    pass
+                            except AttributeError: 
+
+                                if player.direction.x < 0:
+                                    player.rect.left = sprite.rect.right
+                                    if sprite.climb:
+                                        player.direction.y = 1
+                                        player.double_jump = 1
+                                elif player.direction.x > 0:
+                                    player.rect.right = sprite.rect.left
+                                    if sprite.climb:
+                                        player.direction.y = 1
+                                        player.double_jump = 1
             else: player.gravity = 0.8
                     
                     
@@ -235,7 +241,8 @@ class Level:
                         if sprite.door:
                             if player.key > 0:
                                 player.key -= 1
-                                sprite.rect.y = sprite.rect.y - 2000
+                                sprite.door = False
+                                sprite.image = sprite.open_image
                                 
                     
                     except AttributeError:
@@ -260,14 +267,18 @@ class Level:
                             main(self.layout_index)  
                             
                         else:
-                            if player.direction.y > 0:
-                                player.rect.bottom = sprite.rect.top
-                                player.direction.y = 0
-                                player.double_jump = 1
-                                player.time = time.time()
-                            elif player.direction.y < 0:
-                                player.rect.top = sprite.rect.bottom
-                                player.direction.y = 0
+                            try:
+                                if sprite.open:
+                                    pass
+                            except AttributeError:
+                                if player.direction.y > 0:
+                                    player.rect.bottom = sprite.rect.top
+                                    player.direction.y = 0
+                                    player.double_jump = 1
+                                    player.time = time.time()
+                                elif player.direction.y < 0:
+                                    player.rect.top = sprite.rect.bottom
+                                    player.direction.y = 0
                     
     def bullet_update(self):
         player = self.player.sprite
