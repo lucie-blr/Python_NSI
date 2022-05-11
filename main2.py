@@ -264,10 +264,8 @@ def main(level_map):
         screen = pygame.display.set_mode()
         WIDTH, HEIGHT = screen.get_size()
 
-        width = int(width)
-        height = int(input("Height :"))
-        screen = pygame.display.set_mode((width, height))
-    
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
     clock = pygame.time.Clock()
     spawn = "null"
     level = Level(level_map, screen, spawn)

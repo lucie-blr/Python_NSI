@@ -12,7 +12,7 @@ class Tile(pygame.sprite.Sprite): #Création de la class
         self.sign = [False, "bonjour"] #Définition de si l'objet est un panneau et du message de l'objet
          
     def update(self, x_shift): #Fonction qui change les variables de l'objet
-        self.rect.x += x_shift #Ajoute à la position en x de l'objet la vitesse de déplacement de la map
+        self.rect.x += x_shift #Chan
 
 class Tile_wall(pygame.sprite.Sprite):
     def __init__(self, pos, size):

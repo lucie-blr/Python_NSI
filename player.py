@@ -121,4 +121,4 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.animate() #animer le joueur
         self.get_status() #récupérer le status du joueur
         self.rect.x += self.direction.x * self.speed #Ajouter à la position du joueur sa direction en x multiplié par sa vitesse
-        
+         
