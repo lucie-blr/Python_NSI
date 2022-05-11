@@ -16,6 +16,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.facing_right = True #Définition de l'orientation de l'image
         self.death = 0 #Définition de la valeur d'animation de mort
         self.win = False #Définition de si le joueur a gagné ou pas
+        self.bullet = False
         
         #mouvement
         self.direction = pygame.math.Vector2(0,0) #Définition de la direction du perosnnage
@@ -107,6 +108,12 @@ class Player(pygame.sprite.Sprite): #Création de la class
                 if time.time() > (self.time + 0.2): #si son temps actuel via l'heure UNIX avec 0.2 secondes de plus est supérieur au temps actuel via l'heure UNIX
                     self.double_jump = 0 #mettre le double jump sur 0
                     self.jump() #sauter
+        
+        if keys[pygame.K_SPACE]:
+            self.bullet = True
+
+        else:
+            self.bullet = False
             
     def apply_gravity(self): #Application de la gravité
         self.direction.y += self.gravity #ajouter à la direction en y du joueur la gravité
@@ -122,3 +129,31 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.get_status() #récupérer le status du joueur
         self.rect.x += self.direction.x * self.speed #Ajouter à la position du joueur sa direction en x multiplié par sa vitesse
          
+         
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, pos):
+        super().__init__()
+        self.image = pygame.image.load("./alien/sss.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.Ask_bullet = True
+        self.speed = 15
+        self.direction = pygame.math.Vector2(0,0)
+        self.direction.x = 0
+
+
+    def update(self):
+        self.bullet
+        self.rect.x += self.speed * self.direction.x
+
+
+    def bullet(self, player):
+        self.rect.x = player.rect.x
+        self.rect.y = player.rect.y
+
+
+        if player.facing_right == False:
+            self.direction.x = -1
+
+
+        elif player.facing_right == True:
+            self.direction.x = 1 
