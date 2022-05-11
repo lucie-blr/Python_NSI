@@ -84,6 +84,16 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Bullet((x,y))
                     self.bullet.add(player_sprite)
+                if cell == 'D':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_door((x,y), tile_size)
+                    self.tiles.add(tile)
+                if cell == 'K':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_key((x,y), tile_size)
+                    self.tiles.add(tile)
     def scroll_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx 
@@ -109,7 +119,7 @@ class Level:
         
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
-                try:
+                try: #end
                     if sprite.end:
                         with open("data.json", "r") as f:	#config size screen
                             data = json.load(f)
@@ -132,6 +142,26 @@ class Level:
                             run.main()
                         
                 except AttributeError: 
+                    
+                
+                    try:
+                        if sprite.key:
+                            player.key = player.key + 1
+                            sprite.rect.y = sprite.rect.y + 2000
+                            
+                    except AttributeError:
+                        pass
+                    
+                    try:
+                        if sprite.door:
+                            if player.key > 0:
+                                player.key -= 1
+                                sprite.rect.y = sprite.rect.y - 2000
+                                
+                    
+                    except AttributeError:
+                        pass
+                    
                     if sprite.sign[0]:
                         
                         text_font = pygame.font.Font(None, 40)  #Text Font
@@ -191,7 +221,26 @@ class Level:
                         if player.death == 4:
                             run.main()
                         
-                except AttributeError: 
+                except AttributeError:
+                    
+                    try:
+                        if sprite.key:
+                            player.key = player.key + 1
+                            sprite.rect.y = sprite.rect.y + 2000
+                            
+                    except AttributeError:
+                        pass
+                    
+                    try:
+                        if sprite.door:
+                            if player.key > 0:
+                                player.key -= 1
+                                sprite.rect.y = sprite.rect.y - 2000
+                                
+                    
+                    except AttributeError:
+                        pass
+                     
                     if sprite.sign[0]:
                         
                         text_font = pygame.font.Font(None, 40)  #Text Font
@@ -260,6 +309,15 @@ class Level:
         # create a rectangular object for the text
         textRect = text.get_rect()
         textRect.center = (WIDTH - (WIDTH-80) , HEIGHT - (HEIGHT-20))
+        screen.blit(text, textRect)
+        
+        # Text
+        text_font = pygame.font.Font(None, 40)	#Text Font
+        white = (255,255,255)
+        text = text_font.render(f'Keys : {self.player.sprite.key}', True, white)
+        # create a rectangular object for the text
+        textRect = text.get_rect()
+        textRect.center = (WIDTH - (WIDTH-300) , HEIGHT - (HEIGHT-20))
         screen.blit(text, textRect)
 
     def menu():

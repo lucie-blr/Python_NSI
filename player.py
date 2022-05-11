@@ -17,6 +17,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.death = 0 #Définition de la valeur d'animation de mort
         self.win = False #Définition de si le joueur a gagné ou pas
         self.bullet = False
+        self.key = 0
         
         #mouvement
         self.direction = pygame.math.Vector2(0,0) #Définition de la direction du perosnnage

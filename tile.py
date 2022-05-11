@@ -12,7 +12,7 @@ class Tile(pygame.sprite.Sprite): #Création de la class
         self.sign = [False, "bonjour"] #Définition de si l'objet est un panneau et du message de l'objet
          
     def update(self, x_shift): #Fonction qui change les variables de l'objet
-        self.rect.x += x_shift #Chan
+        self.rect.x += x_shift #Déplacer les tiles
 
 class Tile_wall(pygame.sprite.Sprite):
     def __init__(self, pos, size):
@@ -104,6 +104,32 @@ class Tile_end(pygame.sprite.Sprite):
         self.climb = False
         self.sign = [False, "Use left and right keys to move"]
         self.end = True
+ 
+    def update(self, x_shift):
+        self.rect.x += x_shift
+        
+class Tile_key(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/sign.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.sign = [False, "Use left and right keys to move"]
+        self.key = True
+ 
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Tile_door(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/sign.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.sign = [False, "Use left and right keys to move"]
+        self.door = True
  
     def update(self, x_shift):
         self.rect.x += x_shift
