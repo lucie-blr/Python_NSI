@@ -16,13 +16,13 @@ class Level:
         
         
         
-    def setup(self, layout):
+    def setup(self, layout_index):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
-        messages = ["Keep calm, but the spikes can kill you.","Press directional keys to move.","You can also make double jump.","As you can double jump, you can climb the walls."]
+        messages = levelsign[layout_index]
         sign_index = 0
-        self.layout_index = layout
-        layout = levelmap[layout]
+        self.layout_index = layout_index
+        layout = levelmap[layout_index]
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
                 if cell == 'T':
@@ -140,7 +140,6 @@ class Level:
                             
                             #Death animation
                             player.status = 'death'
-                            print(player.death)
                             if player.death == 20:
                                 
                                 main(self.layout_index)  
