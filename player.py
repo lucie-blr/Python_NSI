@@ -133,7 +133,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.image = pygame.image.load("./alien/sss.png")
+        self.image = pygame.image.load("./alien/bullet.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.Ask_bullet = True
         self.speed = 15
@@ -149,14 +149,20 @@ class Bullet(pygame.sprite.Sprite):
     def bullet(self, player):
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y
-
+        image = pygame.image.load("./alien/bullet.png")
 
         if player.facing_right == False:
             self.direction.x = -1
+            flipped_image = pygame.transform.flip(image, True, False)
+            self.image = flipped_image
+            
 
 
         elif player.facing_right == True:
             self.direction.x = 1 
+            self.image = image
+                
+                
             
 #Tutoriel : Balle
 #
