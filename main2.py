@@ -17,7 +17,7 @@ class Level:
     def setup(self, layout, spawn):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
-        messages = ["prout","Press directional keys to move.","prout3"]
+        messages = ["Keep calm, but the spikes can kill you.","Press directional keys to move.","You can also make double jump.","As you can double jump, you can climb the walls."]
         sign_index = 0
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
@@ -46,8 +46,8 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_sign((x,y),tile_size)
                     tile.sign[1] = messages[sign_index]
-
                     self.tiles.add(tile)
+                    print(sign_index)
                     sign_index = sign_index + 1
                 if cell == 'P':
                     x = col_index * tile_size
@@ -95,11 +95,11 @@ class Level:
             if sprite.rect.colliderect(player.rect):
                 if sprite.sign[0]:
                     
-                    text_font = pygame.font.Font(None, 60)  #Text Font
+                    text_font = pygame.font.Font(None, 40)  #Text Font
                     white = (255,255,255)
                     text = text_font.render(sprite.sign[1], True, white)
                     textRect = text.get_rect()
-                    textRect.center = (sprite.rect.x, sprite.rect.y - 96)
+                    textRect.center = (sprite.rect.x, sprite.rect.y - 48)
                     screen.blit(text, textRect)
                 else:    
                     
@@ -136,11 +136,13 @@ class Level:
             if sprite.rect.colliderect(player.rect):
                 if sprite.sign[0]:
                     
-                    text_font = pygame.font.Font(None, 60)  #Text Font
+                    text_font = pygame.font.Font(None, 40)  #Text Font
                     white = (255,255,255)
-                    text = text_font.render(sprite.sign[1], True, white)
+                    dark = (0,0,0)
+                    text = text_font.render(sprite.sign[1], True, white, dark)
                     textRect = text.get_rect()
-                    textRect.center = (sprite.rect.x, sprite.rect.y - 96)
+                    
+                    textRect.center = (sprite.rect.x, sprite.rect.y - 48)
                     screen.blit(text, textRect)
                 else:    
                     
