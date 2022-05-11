@@ -15,6 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.status = 'idle'
         self.facing_right = True
         self.death = 0
+        self.win = False
         
         #mouvement
         self.direction = pygame.math.Vector2(0,0)
@@ -36,13 +37,24 @@ class Player(pygame.sprite.Sprite):
         
     
     def animate(self):
-        
+        if self.status == "win":
+            self.win = True
+            self.status = 'idle'
         animation = self.animations[self.status]
         if self.status == 'death':
             print(self.death)
             if self.death < 20:
                 self.image = animation[int(self.death)]
                 time.sleep(0.02)
+                
+                self.death = self.death + 1
+                self.direction.x = 0
+                self.direction.y = 0
+            return
+        elif self.win:
+            if self.death < len(animation):
+                self.image = animation[0]
+                time.sleep(0.5)
                 
                 self.death = self.death + 1
                 self.direction.x = 0

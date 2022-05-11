@@ -93,3 +93,16 @@ class Tile_sign(pygame.sprite.Sprite):
  
     def update(self, x_shift):
         self.rect.x += x_shift
+        
+class Tile_end(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/sign.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.sign = [False, "Use left and right keys to move"]
+        self.end = True
+ 
+    def update(self, x_shift):
+        self.rect.x += x_shift
