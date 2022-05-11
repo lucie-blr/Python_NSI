@@ -91,28 +91,13 @@ def main():
 	w_center_200 = (WIDTH/2)-100	#widht for 200px button, center
 	h_bottom = HEIGHT*(2/3)			#height bottom
 
-	#button position
-	if WIDTH == 1920 or FULL == "True":		#for 1920x1080 screen
-		w1= WIDTH-((7/8)*WIDTH)					#first column
-		w2= WIDTH/2-100							#second column
-		w3= WIDTH-((2/8)*WIDTH)					#third column
-		h1 = HEIGHT-(HEIGHT-150)				#First lign
-		h2 = HEIGHT-(HEIGHT-350)				#second line
-		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
-	elif WIDTH == 1280:						#for 1280x720 screen
-		w1= WIDTH-((7/8)*WIDTH)					#first column
-		w2= WIDTH/2-100							#second column
-		w3= WIDTH-((2/8)*WIDTH)					#third column
-		h1 = HEIGHT-(HEIGHT-150)				#First lign
-		h2 = HEIGHT-(HEIGHT-350)				#second line
-		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
-	elif WIDTH == 1000:						#for 1000x600 screen
-		w1= WIDTH-((7/8)*WIDTH)					#first column
-		w2= WIDTH/2-100							#second column
-		w3= WIDTH-((2/8)*WIDTH)					#third column
-		h1 = HEIGHT-(HEIGHT-150)				#First lign
-		h2 = HEIGHT-(HEIGHT-350)				#second line
-		wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
+	#for level button
+	w1= WIDTH-((7/8)*WIDTH)					#first column
+	w2= WIDTH/2-100							#second column
+	w3= WIDTH-((2/8)*WIDTH)					#third column
+	h1 = HEIGHT-(HEIGHT-150)				#First lign
+	h2 = HEIGHT-(HEIGHT-350)				#second line
+	wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
 
 	#button
 	back_button = Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
