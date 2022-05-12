@@ -1,3 +1,11 @@
 # .gitignore 
 data.json
 ./__pycache__/
+__pycache__/tile.cpython-310.pyc
+__pycache__/settings.cpython-310.pyc
+__pycache__/select.cpython-310.pyc
+__pycache__/run.cpython-310.pyc
+__pycache__/player.cpython-310.pyc
+__pycache__/main2.cpython-310.pyc
+__pycache__/gameset.cpython-310.pyc
+__pycache__/button.cpython-310.pyc

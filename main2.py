@@ -8,6 +8,7 @@ import run
 import select
 import button
 import json
+import button
 
 class Level:
     def __init__(self, level_data, surface, spawn):
@@ -23,6 +24,7 @@ class Level:
         messages = levelsign[layout_index]
         sign_index = 0
         self.layout_index = layout_index
+        print(len(levelmap), layout_index)
         layout = levelmap[layout_index]
         self.bullet = pygame.sprite.GroupSingle()
         
@@ -160,6 +162,7 @@ class Level:
                                 player.key -= 1
                                 sprite.door = False
                                 sprite.image = sprite.open_image
+                                sprite.open = True
                                 
                     
                     except AttributeError:
@@ -185,12 +188,22 @@ class Level:
                                 main(self.layout_index)  
                         
                         else:    
-
+                            
                             try:
                                 if sprite.open:
                                     pass
+                                else:
+                                    if player.direction.x < 0:
+                                        player.rect.left = sprite.rect.right
+                                    if sprite.climb:
+                                        player.direction.y = 1
+                                        player.double_jump = 1
+                                    elif player.direction.x > 0:
+                                        player.rect.right = sprite.rect.left
+                                        if sprite.climb:
+                                            player.direction.y = 1
+                                            player.double_jump = 1
                             except AttributeError: 
-
                                 if player.direction.x < 0:
                                     player.rect.left = sprite.rect.right
                                     if sprite.climb:
@@ -201,6 +214,8 @@ class Level:
                                     if sprite.climb:
                                         player.direction.y = 1
                                         player.double_jump = 1
+                                
+                                
             else: player.gravity = 0.8
                     
                     
@@ -245,6 +260,7 @@ class Level:
                                 player.key -= 1
                                 sprite.door = False
                                 sprite.image = sprite.open_image
+                                sprite.open = True
                                 
                     
                     except AttributeError:
@@ -272,6 +288,15 @@ class Level:
                             try:
                                 if sprite.open:
                                     pass
+                                else:
+                                    if player.direction.y > 0:
+                                        player.rect.bottom = sprite.rect.top
+                                        player.direction.y = 0
+                                        player.double_jump = 1
+                                        player.time = time.time()
+                                    elif player.direction.y < 0:
+                                        player.rect.top = sprite.rect.bottom
+                                        player.direction.y = 0
                             except AttributeError:
                                 if player.direction.y > 0:
                                     player.rect.bottom = sprite.rect.top
@@ -327,6 +352,7 @@ class Level:
 
 
 def main(level_map):
+
     def buttons_draw(screen):
         for b in buttons:
             b.draw(screen)
@@ -363,12 +389,13 @@ def main(level_map):
 
     #buttons
     button1 = button.Button('Resume', 200, 40, (w1, h1), 5)      #resume
+
     button2 = button.Button('Menu', 200, 40, (w1, h1+60), 5)	    #menu redirection
     button3 = button.Button('Exit', 200, 40, (w1, h1+120), 5)	#exit game
     buttons.append(button1)
     buttons.append(button2)
     buttons.append(button3)
-    
+
     RUNNING, PAUSE = 0, 1
     state = RUNNING
 
