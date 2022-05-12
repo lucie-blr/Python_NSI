@@ -9,6 +9,8 @@ import select
 import button
 import json
 import button
+from PIL import Image
+from datetime import datetime
 
 class Level:
     def __init__(self, level_data, surface, spawn):
@@ -420,7 +422,7 @@ def main(level_map):
     #buttons
     button1 = button.Button('Resume', 200, 40, (w1, h1), 5)      #resume
 
-    button2 = button.Button('Menu', 200, 40, (w1, h1+60), 5)	    #menu redirection
+    button2 = button.Button('Menu', 200, 40, (w1, h1+60), 5)	#menu redirection
     button3 = button.Button('Exit', 200, 40, (w1, h1+120), 5)	#exit game
     buttons.append(button1)
     buttons.append(button2)
@@ -434,54 +436,75 @@ def main(level_map):
     while True:
         mouse = pygame.mouse.get_pos()
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT:   #detect the QUIT request
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if state == RUNNING:
-                    if event.key == pygame.K_ESCAPE:
-                        pygame.image.save(screen,"./cache/pause-screen-cache.png")
-                        cache = pygame.image.load("./cache/pause-screen-cache.png")
+                    if event.key == pygame.K_ESCAPE:    # start pause with escape touch
+                        pygame.image.save(screen,"./cache/pause-screen-cache.png")  #take a screenshot for the bg of pause screen
+                        cache = Image.open("./cache/pause-screen-cache.png")    #open image
+                        cache = cache.convert("L")  #convert in black and white
+                        cache = cache.save("./cache/pause-screen-cache.png")    #save modification
+                        cache = pygame.image.load("./cache/pause-screen-cache.png") #load image in a variable
+                        #set status : pause
                         state = PAUSE
                 else:
-                    if event.key == pygame.K_ESCAPE:
+                    if event.key == pygame.K_ESCAPE:    # stop pause with escape touch
+                        #set status : play
                         state = RUNNING
+
+                if event.key == pygame.K_s: #detect "s"touch pressed for screenshot
+                    date = datetime.now()   #configure date and hour for the name of the screen
+                    day = date.day
+                    month = date.month
+                    year = date.year
+                    hour = date.hour
+                    minute = date.minute
+                    pygame.image.save(screen, f"./screenshot/{year}_{month}_{day}-{hour}_{minute}.png") #save the screen
         else:
             screen.fill((0, 0, 0))
 
-            if state == RUNNING:
+            if state == RUNNING:    #satus : play
                 screen.fill('black')
                 screen.blit(bg,(0,0))
                 level.run(screen, level_map)
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))
-
+                
+                #check button pause pressed 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
                         if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
-                            pygame.image.save(screen,"./cache/pause-screen-cache.png")
-                            cache = pygame.image.load("./cache/pause-screen-cache.png")
+                            pygame.image.save(screen,"./cache/pause-screen-cache.png")  #take a screenshot for the bg of pause screen
+                            cache = Image.open("./cache/pause-screen-cache.png")    #open image
+                            cache = cache.convert("L")  #convert in black and white
+                            cache = cache.save("./cache/pause-screen-cache.png")    #save modification
+                            cache = pygame.image.load("./cache/pause-screen-cache.png") #load image in a variable
+                            #set status : pause
                             state = PAUSE
                             time.sleep(0.3)
 
-            elif state == PAUSE:
+            elif state == PAUSE:    #satus : pause
                 screen.blit(cache, (0,0))
-                screen.blit(pause_text, (WIDTH/2-48, 100))     #text "pause"
+                screen.blit(pause_text, (WIDTH/2-65, 100))     #text "pause"
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))   #pause button
                 buttons_draw(screen)	#show button
 
+                #check button pause pressed 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
                         if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55 or w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+40: #pause buton and resum
+                            #set status : play
                             state = RUNNING
                             time.sleep(0.3)
                         if w1 <= mouse[0] <= w1+200 and h1+60 <= mouse[1] <= h1+60+40: #menu
-                            run.main()
-                        if w1 <= mouse[0] <= w1+200 and h1+120 <= mouse[1] <= h1+120+40: #menu
+                            run.main()  #
+                        if w1 <= mouse[0] <= w1+200 and h1+120 <= mouse[1] <= h1+120+40: #exit
                             pygame.quit()
                             sys.exit()
 
             pygame.display.update()
-            clock.tick(60)
+            clock.tick(60)  #FPS
 
 if __name__ == "__main__":
     spawn = "null"
