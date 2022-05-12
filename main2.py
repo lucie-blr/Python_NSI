@@ -381,7 +381,6 @@ class Level:
         screen.blit(text, textRect)
 
 def main(level_map):
-
     def buttons_draw(screen):
         for b in buttons:
             b.draw(screen)
@@ -406,10 +405,24 @@ def main(level_map):
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
     clock = pygame.time.Clock()
+    
+    if level_map == 1:
+        bg = pygame.image.load("./alien/background1.jpg")
+    elif level_map == 2:
+        bg = pygame.image.load("./alien/background2.jpg")
+    elif level_map == 3:
+        bg = pygame.image.load("./alien/background3.jpg")
+    elif level_map == 4:
+        bg = pygame.image.load("./alien/background4.jpg")
+    elif level_map == 5:
+        bg = pygame.image.load("./alien/background4.jpg")
+    elif level_map == 6:
+        bg = pygame.image.load("./alien/background4.jpg")
+
     spawn = "null"
+    
     level = Level(level_map, screen, spawn)
 
-    bg = pygame.image.load("./alien/background.jpg")
     pause = pygame.image.load("./game-image/pause.png")
 
 	#button position
@@ -504,5 +517,5 @@ def main(level_map):
             clock.tick(60)  #FPS
 
 if __name__ == "__main__":
-    spawn = "null"
+    spawn= "null"
     main(spawn)
