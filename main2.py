@@ -68,10 +68,30 @@ class Level:
                         
                     self.player.add(player_sprite)
                     print(self.spawn)
-                if cell == 'S':
+                if cell == '↑':
                     x = col_index * tile_size
                     y = row_index * tile_size
                     tile = Tile_spike((x,y+48),tile_size)
+                    self.tiles.add(tile)
+                if cell == '↟':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_fake_spike((x,y+48),tile_size)
+                    self.tiles.add(tile)
+                if cell == '→':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_right_spike((x,y+48),tile_size)
+                    self.tiles.add(tile)
+                if cell == '←':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_left_spike((x,y+48),tile_size)
+                    self.tiles.add(tile)
+                if cell == '↓':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_bottom_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == 'Y':
                     x = col_index * tile_size
@@ -98,30 +118,48 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_key((x,y), tile_size)
                     self.tiles.add(tile)
+                if cell == 'M':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Mob((x,y), tile_size)
+                    self.tiles.add(tile)
     def scroll_x(self):
         player = self.player.sprite
+        bullet = self.bullet.sprite
         player_x = player.rect.centerx 
         direction_x = player.direction.x
         width, h = pygame.display.get_surface().get_size()
         
         if player_x < width / 3 and direction_x < 0:
             self.world_shift = 5
+            bullet.speed = bullet.speed - player.speed
             player.speed = 0
         
         elif player_x > width - (width / 2) and direction_x > 0:
             self.world_shift = -5
+            bullet.speed = bullet.speed - player.speed
             player.speed = 0
         
         else:
             self.world_shift = 0
             player.speed = 5
+            bullet.speed = 15
         
     def horizontal_mouvement_collision(self,screen, level_map):
         player = self.player.sprite
+        bullet = self.bullet.sprite
         
         player.rect.x += player.direction.x * player.speed
         
         for sprite in self.tiles.sprites():
+            
+            if sprite.rect.colliderect(bullet.rect):
+                try:
+                    if sprite.mob:
+                        sprite.rect.y = 2000
+                except AttributeError:
+                    pass
+            
             if sprite.rect.colliderect(player.rect):
                 try: #end
                     if sprite.end:
@@ -222,6 +260,7 @@ class Level:
         
     def vertical_mouvement_collision(self,screen, level_map):
         player = self.player.sprite
+        bullet = self.bullet.sprite
         player.apply_gravity()
         
         for sprite in self.tiles.sprites():

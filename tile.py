@@ -1,3 +1,4 @@
+from re import S
 import pygame
 
 #Création des différents type de block avec des class
@@ -40,6 +41,51 @@ class Tile_spike(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
         self.image = pygame.image.load("./alien/spike.png")
+        self.rect = self.image.get_rect(bottomleft = pos)
+        self.damage = True
+        self.climb = False
+        self.sign = [False, "bonjour"]
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Tile_fake_spike(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/spike.png")
+        self.rect = self.image.get_rect(bottomleft = pos)
+        self.damage = False
+        self.climb = False
+        self.sign = [False, "bonjour"]
+        self.open = True
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Tile_left_spike(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/left_spike.png")
+        self.rect = self.image.get_rect(bottomleft = pos)
+        self.damage = True
+        self.climb = False
+        self.sign = [False, "bonjour"]
+    def update(self, x_shift):
+        self.rect.x += x_shift
+        
+class Tile_right_spike(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/right_spike.png")
+        self.rect = self.image.get_rect(bottomleft = pos)
+        self.damage = True
+        self.climb = False
+        self.sign = [False, "bonjour"]
+    def update(self, x_shift):
+        self.rect.x += x_shift
+        
+class Tile_bottom_spike(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/down_spike.png")
         self.rect = self.image.get_rect(bottomleft = pos)
         self.damage = True
         self.climb = False
@@ -133,5 +179,20 @@ class Tile_door(pygame.sprite.Sprite):
         self.door = True
         self.open = False
  
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Mob(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/left.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = True
+        self.climb = False
+        self.sign = [False, "Use left and right keys to move"]
+        self.door = False
+        self.open = False
+        self.mob = True
+        
     def update(self, x_shift):
         self.rect.x += x_shift
