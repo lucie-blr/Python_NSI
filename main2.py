@@ -84,13 +84,13 @@ class Level:
                     tile = Tile_right_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '←':
-                    x = col_index * tile_size
+                    x = col_index * tile_size + 24
                     y = row_index * tile_size
                     tile = Tile_left_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '↓':
                     x = col_index * tile_size
-                    y = row_index * tile_size
+                    y = row_index * tile_size - 24
                     tile = Tile_bottom_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == 'Y':
@@ -157,6 +157,7 @@ class Level:
                 try:
                     if sprite.mob:
                         sprite.rect.y = 2000
+                        player.coin += 1
                 except AttributeError:
                     pass
             
@@ -374,21 +375,11 @@ class Level:
         # Text
         text_font = pygame.font.Font(None, 40)	#Text Font
         white = (255,255,255)
-        text = text_font.render(f'Level {level_map}', True, white)
+        text = text_font.render(f'Level {level_map} | Keys : {self.player.sprite.key} | Coins : {self.player.sprite.coin}', True, white)
         # create a rectangular object for the text
         textRect = text.get_rect()
-        textRect.center = (WIDTH - (WIDTH-80) , HEIGHT - (HEIGHT-20))
+        textRect.center = (WIDTH - (WIDTH-200) , HEIGHT - (HEIGHT-20))
         screen.blit(text, textRect)
-        
-        # Text
-        text_font = pygame.font.Font(None, 40)	#Text Font
-        white = (255,255,255)
-        text = text_font.render(f'Keys : {self.player.sprite.key}', True, white)
-        # create a rectangular object for the text
-        textRect = text.get_rect()
-        textRect.center = (WIDTH - (WIDTH-300) , HEIGHT - (HEIGHT-20))
-        screen.blit(text, textRect)
-
 
 def main(level_map):
 
