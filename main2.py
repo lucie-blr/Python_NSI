@@ -9,6 +9,8 @@ import select
 import button
 import json
 import button
+from PIL import Image
+from datetime import datetime
 
 class Level:
     def __init__(self, level_data, surface, spawn):
@@ -450,11 +452,22 @@ def main(level_map):
                 if state == RUNNING:
                     if event.key == pygame.K_ESCAPE:
                         pygame.image.save(screen,"./cache/pause-screen-cache.png")
+                        cache = Image.open("./cache/pause-screen-cache.png")
+                        cache = cache.convert("L")
+                        cache = cache.save("./cache/pause-screen-cache.png")
                         cache = pygame.image.load("./cache/pause-screen-cache.png")
                         state = PAUSE
                 else:
                     if event.key == pygame.K_ESCAPE:
                         state = RUNNING
+                if event.key == pygame.K_s:
+                    date = datetime.now()
+                    day = date.day
+                    month = date.month
+                    year = date.year
+                    hour = date.hour
+                    minute = date.minute
+                    pygame.image.save(screen, f"./screenshot/{year}_{month}_{day}-{hour}_{minute}.png")
         else:
             screen.fill((0, 0, 0))
 
@@ -468,13 +481,16 @@ def main(level_map):
                     if pygame.mouse.get_pressed()[0]:	#Check click button and react
                         if WIDTH-70 <= mouse[0] <= WIDTH-70+53 and HEIGHT-(HEIGHT-20) <= mouse[1] <= HEIGHT-(HEIGHT-20)+55: #pause buton
                             pygame.image.save(screen,"./cache/pause-screen-cache.png")
+                            cache = Image.open("./cache/pause-screen-cache.png")
+                            cache = cache.convert("L")  #convert image in black and white
+                            cache = cache.save("./cache/pause-screen-cache.png")
                             cache = pygame.image.load("./cache/pause-screen-cache.png")
                             state = PAUSE
                             time.sleep(0.3)
 
             elif state == PAUSE:
                 screen.blit(cache, (0,0))
-                screen.blit(pause_text, (WIDTH/2-48, 100))     #text "pause"
+                screen.blit(pause_text, (WIDTH/2-65, 100))     #text "pause"
                 screen.blit(pause,(WIDTH-70, HEIGHT-(HEIGHT-20)))   #pause button
                 buttons_draw(screen)	#show button
 
