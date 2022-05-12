@@ -59,6 +59,16 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_unc_wall((x,y),tile_size)
                     self.tiles.add(tile)
+                if cell == 'A':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_bg_wall((x,y),tile_size)
+                    self.tiles.add(tile)
+                if cell == 'V':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_bg_glass((x,y),tile_size)
+                    self.tiles.add(tile)
                 if cell == 'L':
                     x = col_index * tile_size
                     y = row_index * tile_size

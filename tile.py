@@ -37,6 +37,32 @@ class Tile_unc_wall(pygame.sprite.Sprite):
         self.sign = [False, "bonjour"]
     def update(self, x_shift):
         self.rect.x += x_shift
+
+class Tile_bg_wall(pygame.sprite.Sprite):  #wall background
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/wall-ar.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.open = True
+        self.sign = [False, "bonjour"]
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
+class Tile_bg_glass(pygame.sprite.Sprite):  #glass background
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/glass.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.open = True
+        self.sign = [False, "bonjour"]
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
         
 class Tile_ground(pygame.sprite.Sprite):
     def __init__(self, pos, size):
