@@ -131,7 +131,7 @@ class Tile_door(pygame.sprite.Sprite):
         self.climb = False
         self.sign = [False, "Use left and right keys to move"]
         self.door = True
-        self.open = True
+        self.open = False
  
     def update(self, x_shift):
         self.rect.x += x_shift
