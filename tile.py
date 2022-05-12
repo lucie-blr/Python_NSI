@@ -1,5 +1,6 @@
 from re import S
 import pygame
+from settings import import_folder
 
 #Création des différents type de block avec des class
 
@@ -197,7 +198,7 @@ class Tile_door(pygame.sprite.Sprite):
 class Mob(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/left.png")
+        self.image = pygame.image.load("./alien/right.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = True
         self.climb = False
@@ -205,6 +206,35 @@ class Mob(pygame.sprite.Sprite):
         self.door = False
         self.open = False
         self.mob = True
+        self.speed = 5
+        self.move = 0
+        self.animation = 0
+        self.right = True
+        
+        self.full_path = './alien/slime'
+        print(self.full_path)
+        self.animations = import_folder(self.full_path)
         
     def update(self, x_shift):
-        self.rect.x += x_shift
+        self.rect.x += self.speed + x_shift
+        if self.move < 30:
+            self.move += 1
+        else:
+            self.speed = self.speed * -1
+            self.move = 0
+            if self.right:
+                self.right = False
+            else:
+                self.right = True
+            
+        if self.animation < len(self.animations):
+            image = self.animations[int(self.animation)]
+            self.animation += 0.15
+            if self.right: #si le joueur est tourné vers la droite, retourner l'image
+                flipped_image = pygame.transform.flip(image, True, False)
+                self.image = flipped_image
+            else:
+                self.image = image
+                
+        else:
+            self.animation = 0
