@@ -54,6 +54,11 @@ class Level:
                     y = row_index * tile_size
                     tile = Tile_wall((x,y),tile_size)
                     self.tiles.add(tile)
+                if cell == 'U':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile_unc_wall((x,y),tile_size)
+                    self.tiles.add(tile)
                 if cell == 'L':
                     x = col_index * tile_size
                     y = row_index * tile_size
@@ -263,7 +268,6 @@ class Level:
         
     def vertical_mouvement_collision(self,screen, level_map):
         player = self.player.sprite
-        bullet = self.bullet.sprite
         player.apply_gravity()
         
         for sprite in self.tiles.sprites():
@@ -288,14 +292,7 @@ class Level:
                         
                 except AttributeError:
                     
-                    try:
-                        if sprite.key:
-                            player.key = player.key + 1
-                            sprite.rect.y = sprite.rect.y + 2000
-                            
-                    except AttributeError:
-                        pass
-                    
+          
                     try:
                         if sprite.door:
                             if player.key > 0:

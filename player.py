@@ -7,6 +7,7 @@ from settings import import_folder
 class Player(pygame.sprite.Sprite): #Création de la class
     def __init__(self,pos): #Fonction qui se lance à la première utilisation de la class
         super().__init__() 
+        self.skin = 'red'
         self.import_character_assets() #Importation des différentes images de l'objet
         self.frame_index = 0 #Définition de la "frame index" qui servira à l'animation
         self.animation_speed = 0.15 #Définition de la vitesse de défilement des images dans une animation
@@ -19,6 +20,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.bullet = False
         self.key = 0
         self.coin = 0
+        self.weapon = 0
         
         #mouvement
         self.direction = pygame.math.Vector2(0,0) #Définition de la direction du perosnnage
@@ -29,12 +31,13 @@ class Player(pygame.sprite.Sprite): #Création de la class
         self.time = time.time() #Définition du cooldown du double saut via l'heure UNIX
     
     def import_character_assets(self): #Fonction qui importe toutes les images associées au personnage
-        self.character_path='./alien/'
-        self.animations = {'idle':[],'run':[],'jump':[],'fall':[], 'death':[]} #Définition des différents états d'animations
+        self.character_path=f'./alien/{self.skin}/'
+        self.animations = {'idle':[],'run':[],'jump':[],'fall':[], 'death':[], 'weapon':[]} #Définition des différents états d'animations
         
         
         for animation in self.animations.keys(): #Pour chaque état d'animation, on importe les informations des images
             self.full_path = self.character_path + animation
+            print(self.full_path)
             self.animations[animation] = import_folder(self.full_path)
             
         
@@ -43,6 +46,8 @@ class Player(pygame.sprite.Sprite): #Création de la class
         if self.status == "win": #Si le status du joueur est "win", défini la victoire du joueur comme vrai et met son status sur "idle"
             self.win = True
             self.status = 'idle'
+        if self.weapon > 0:
+            self.status = 'weapon'
         animation = self.animations[self.status] #Récupère la liste d'image du status du joueur
         if self.status == 'death': #Si le joueur est mort
             
@@ -55,6 +60,19 @@ class Player(pygame.sprite.Sprite): #Création de la class
                 self.direction.x = 0 #défini sa direction en x sur 0
                 self.direction.y = 0 #défini sa direction en y sur 0
             return
+        elif self.status == 'weapon':
+            if self.weapon < 11:
+                print(self.weapon)
+                image = animation[int(self.weapon)]
+                self.weapon += 0.5
+                if self.facing_right: #si le joueur est tourné vers la droite, retourner l'image
+                    flipped_image = pygame.transform.flip(image, True, False)
+                    self.image = flipped_image
+                else:
+                    self.image = image
+            else:
+                self.weapon = 0
+        
         elif self.win: #si le joueur a gagné et n'est pas mort
             if self.death < len(animation): #tant que la valeur d'animation de mort est inférieur au nombre d'image dans la liste d'images d'animation
                 self.image = animation[0] #l'image du joueur est la première image de la liste d'image
@@ -113,6 +131,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
         
         if keys[pygame.K_SPACE]:
             self.bullet = True
+            self.status = 'weapon'
 
         else:
             self.bullet = False
@@ -153,6 +172,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.y = player.rect.y
         image = pygame.image.load("./alien/bullet.png")
 
+        
         if player.facing_right == False:
             self.direction.x = -1
             flipped_image = pygame.transform.flip(image, True, False)

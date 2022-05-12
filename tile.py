@@ -25,6 +25,17 @@ class Tile_wall(pygame.sprite.Sprite):
         self.sign = [False, "bonjour"]
     def update(self, x_shift):
         self.rect.x += x_shift
+
+class Tile_unc_wall(pygame.sprite.Sprite):
+    def __init__(self, pos, size):
+        super().__init__()
+        self.image = pygame.image.load("./alien/wall.png")
+        self.rect = self.image.get_rect(topleft = pos)
+        self.damage = False
+        self.climb = False
+        self.sign = [False, "bonjour"]
+    def update(self, x_shift):
+        self.rect.x += x_shift
         
 class Tile_ground(pygame.sprite.Sprite):
     def __init__(self, pos, size):
@@ -163,6 +174,7 @@ class Tile_key(pygame.sprite.Sprite):
         self.climb = False
         self.sign = [False, "Use left and right keys to move"]
         self.key = True
+        self.open = True
  
     def update(self, x_shift):
         self.rect.x += x_shift
