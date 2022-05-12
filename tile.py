@@ -7,7 +7,7 @@ from settings import import_folder
 class Tile(pygame.sprite.Sprite): #Création de la class
     def __init__(self, pos, size): #Fonction qui se lance au lancement de la classe
         super().__init__() 
-        self.image = pygame.image.load("./alien/tile.png") #Définition de l'image
+        self.image = pygame.image.load("./alien/tile2.png") #Définition de l'image
         self.rect = self.image.get_rect(topleft = pos) #Récupération de la position du coin en bas à gauche de l'image 
         self.damage = False #Définition de si l'objet peut faire des dégats au joueur
         self.climb = False #Définition de si l'objet peut être grimpé par le joueur
@@ -41,7 +41,7 @@ class Tile_unc_wall(pygame.sprite.Sprite):
 class Tile_ground(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/sss.png")
+        self.image = pygame.image.load("./alien/sss2.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = False
@@ -119,7 +119,7 @@ class Tile_s(pygame.sprite.Sprite):
 class Tile_earth(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/ground.png")
+        self.image = pygame.image.load("./alien/ground2.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = True
