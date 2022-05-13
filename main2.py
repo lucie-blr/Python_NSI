@@ -30,114 +30,130 @@ class Level:
         layout = levelmap[layout_index]
         self.bullet = pygame.sprite.GroupSingle()
         
-        
+        with open("data.json", "r") as f:	#config size screen
+            data = json.load(f)
+            FULL = data["FULL"]
+            WIDTH = data["WIDTH"]
+            
+        y_patch = 0
+        x_patch = 0
+        if FULL == "True" or WIDTH==1920:
+            y_patch = 0
+        elif WIDTH==1280:
+            y_patch = - 4
+            x_patch = 9
+        elif WIDTH==1000:
+            y_patch = - 4
+            x_patch = 12
+        y_patch = y_patch * tile_size
+        x_patch = x_patch * tile_size
         
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
                 if cell == 'T':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch 
+                    y = row_index * tile_size + y_patch
                     tile = Tile((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'G':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_ground((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'E':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_earth((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'W':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_wall((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'U':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_unc_wall((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'A':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_bg_wall((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'V':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_bg_glass((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'L':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_sign((x,y),tile_size)
                     tile.sign[1] = messages[sign_index]
                     self.tiles.add(tile)
                     print(sign_index)
                     sign_index = sign_index + 1
                 if cell == 'P':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     
                     player_sprite = Player((x,y))
                         
                     self.player.add(player_sprite)
                     print(self.spawn)
                 if cell == '↑':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '↟':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_fake_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '→':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_right_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '←':
-                    x = col_index * tile_size + 24
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch + 24
+                    y = row_index * tile_size + y_patch
                     tile = Tile_left_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == '↓':
-                    x = col_index * tile_size
-                    y = row_index * tile_size - 24
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch - 24
                     tile = Tile_bottom_spike((x,y+48),tile_size)
                     self.tiles.add(tile)
                 if cell == 'Y':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_s((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'F':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_end((x,y),tile_size)
                     self.tiles.add(tile)
                 if cell == 'B':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     player_sprite = Bullet((x,y))
                     self.bullet.add(player_sprite)
                 if cell == 'D':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_door((x,y), tile_size)
                     self.tiles.add(tile)
                 if cell == 'K':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Tile_key((x,y), tile_size)
                     self.tiles.add(tile)
                 if cell == 'M':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
                     tile = Mob((x,y), tile_size)
                     self.tiles.add(tile)
     def scroll_x(self):
