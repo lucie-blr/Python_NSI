@@ -2,6 +2,7 @@ import pygame, sys, json
 import run
 import main2
 import button
+import skin
 
 def main():
 	def buttons_draw(screen):
@@ -42,10 +43,15 @@ def main():
 	h1 = HEIGHT-(HEIGHT-150)				#First lign
 	h2 = HEIGHT-(HEIGHT-350)				#second line
 	wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
+	#skin button position
+	w = WIDTH-(WIDTH-40)
+	h = HEIGHT-80
 
 	#button
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
+	skin_button = button.Button('Skin', 100, 40, (w, h), 5)
 	buttons.append(back_button)
+	buttons.append(skin_button)
 
 	def img():
 		with open("data.json", "r") as f:	#config size screen
@@ -140,6 +146,8 @@ def main():
 					if map6 == "True":	#verif unlock level
 						if w3 <= mouse[0] <= w3+200 and h2 <= mouse[1] <= h2+113:	#verif click level
 							main2.main(6)	#run level
+					if w <= mouse[0] <= w+100 and h <= mouse[1] <= h+40:	#verif click skin button
+						skin.main()	#skin redirect
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
 

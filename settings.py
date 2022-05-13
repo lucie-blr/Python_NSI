@@ -27,7 +27,7 @@ levelmap=[  [ #le joueur voit par paquet de dix lignes
 'EEEEEEEEEEEEET             TT                                    W                                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEEETT                                                    W   L                                     WWWWWWWWWWAAAAAAWWAAAAAAWWWWWWWWWEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEET                                                      W  WWWW                                   WWWWWAAAAAAAAAAAAAAAAAAAAAAAAWWWWEEEEEEEEEEEEEEEEEEEEEEE',                                                                                                                
-'EEEEEEEEEG                                                       W  W→                                      WWWAAAAAAAAVVAAAAAAVVAAAAAAAAWWWEEEEEEEEEEEEEEEEEEEEEEE',
+'EEEEEEEEEE                                                       W  W→                                      WWWAAAAAAAAVVAAAAAAVVAAAAAAAAWWWEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEEG                                                      W  W→                                      WWAAAAAAAAAAAAAAAAAAAAAAAAAAAAWWEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEEE                                                      W  W→                                      WWAAAAAAAAAAAAAAAAAAAAAAAAAAAAWWEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEEEG                                                     W  W→                    W                 WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWEEEEEEEEEEEEEEEEEEEEEEE',
