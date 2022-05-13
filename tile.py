@@ -67,7 +67,7 @@ class Tile_bg_glass(pygame.sprite.Sprite):  #glass background
 class Tile_ground(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/sss2.png")
+        self.image = pygame.image.load("./alien/sss3.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = False
@@ -145,7 +145,7 @@ class Tile_s(pygame.sprite.Sprite):
 class Tile_earth(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
-        self.image = pygame.image.load("./alien/ground2.png")
+        self.image = pygame.image.load("./alien/ground3.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = False
         self.climb = True
