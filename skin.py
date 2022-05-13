@@ -4,6 +4,7 @@ import sys
 import button
 from player import Player
 import run
+from settings import import_folder
 
 def main():
 	def buttons_draw(screen):
@@ -49,13 +50,26 @@ def main():
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
 	buttons.append(back_button)
 
-	def skin():
+	frame_index = 0
+
+	def skin(frame_index):
 		with open("data.json", "r") as f:	#config size screen
 			data = json.load(f)
 
-        
+
+		full_path = './alien/red/idle'
+		print(full_path)
+		animations = import_folder(full_path)
+		frame_index += 0.15 #Ajout au numéro de frame la vitesse d'animation
+		if frame_index >= len(animations): #si le numéro de frame est supérieur ou égale à la taille de la liste d'image
+			frame_index = 0 #le numéro d'image vaut 0
+		print(frame_index, len(animations))
+		image = animations[int(frame_index)] #défini l'image à l'arrondi du numéro d'image
+		
 
 		screen.blit(bg, (0, 0))
+		screen.blit(image, (200, 200))
+		return frame_index
 
 	# Text
 	white = (255,255,255)
@@ -73,7 +87,7 @@ def main():
 		bg = pygame.transform.scale(bg, (1000, 600))
 						
 	while True:
-		skin()	#show level image
+		skin(frame_index)	#show level image
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
