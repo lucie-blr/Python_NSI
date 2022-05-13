@@ -197,6 +197,9 @@ class Level:
                     if sprite.mob:
                         sprite.rect.y = 2000
                         player.coin += 1
+                        with open("data.json", "w") as f:	#add coin
+                            data["coin"] += 1
+                            json.dump(data,f)
                 except AttributeError:
                     pass
         
