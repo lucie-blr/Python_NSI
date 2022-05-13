@@ -40,7 +40,7 @@ class Level:
         if FULL == "True" or WIDTH==1920:
             y_patch = 0
         elif WIDTH==1280:
-            y_patch = - 4
+            y_patch = - 3
             x_patch = 9
         elif WIDTH==1000:
             y_patch = - 4

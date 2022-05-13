@@ -62,7 +62,6 @@ class Player(pygame.sprite.Sprite): #Création de la class
             return
         elif self.status == 'weapon':
             if self.weapon < 11:
-                print(self.weapon)
                 image = animation[int(self.weapon)]
                 self.weapon += 0.5
                 if self.facing_right: #si le joueur est tourné vers la droite, retourner l'image
