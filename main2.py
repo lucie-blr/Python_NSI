@@ -185,8 +185,13 @@ class Level:
         
         player.rect.x += player.direction.x * player.speed
         
-        for sprite in self.tiles.sprites():
-            
+        for sprite in self.mobs.sprites():
+            if sprite.rect.colliderect(player.rect):
+                if sprite.damage == True:
+                    #Death animation
+                    player.status = 'death'
+                    if player.death == 20:
+                        main(self.layout_index)  
             if sprite.rect.colliderect(bullet.rect):
                 try:
                     if sprite.mob:
@@ -194,6 +199,10 @@ class Level:
                         player.coin += 1
                 except AttributeError:
                     pass
+        
+        for sprite in self.tiles.sprites():
+            
+            
             
             if sprite.rect.colliderect(player.rect):
                 try: #end
@@ -297,6 +306,14 @@ class Level:
         player = self.player.sprite
         player.apply_gravity()
         
+        for sprite in self.mobs.sprites():
+            if sprite.rect.colliderect(player.rect):
+                if sprite.damage == True:
+                    #Death animation
+                    player.status = 'death'
+                    if player.death == 20:
+                        main(self.layout_index)  
+                
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 try:
