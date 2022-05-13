@@ -22,6 +22,7 @@ class Level:
         
     def setup(self, layout_index, screen):
         self.tiles = pygame.sprite.Group()
+        self.mobs = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         messages = levelsign[layout_index]
         sign_index = 0
@@ -155,7 +156,7 @@ class Level:
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Mob((x,y), tile_size)
-                    self.tiles.add(tile)
+                    self.mobs.add(tile)
     def scroll_x(self):
         player = self.player.sprite
         bullet = self.bullet.sprite
@@ -381,6 +382,8 @@ class Level:
     def run(self,screen, level_map):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
+        self.mobs.update(self.world_shift)
+        self.mobs.draw(self.display_surface)
         self.bullet_update()
         self.bullet.update()
         self.bullet.draw(self.display_surface)
