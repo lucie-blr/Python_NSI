@@ -7,7 +7,7 @@ from settings import import_folder
 class Tile(pygame.sprite.Sprite): #Création de la class
     def __init__(self, pos, size): #Fonction qui se lance au lancement de la classe
         super().__init__() 
-        self.image = pygame.image.load("./alien/tile2.png") #Définition de l'image
+        self.image = pygame.image.load("./alien/tile3.png") #Définition de l'image
         self.rect = self.image.get_rect(topleft = pos) #Récupération de la position du coin en bas à gauche de l'image 
         self.damage = False #Définition de si l'objet peut faire des dégats au joueur
         self.climb = False #Définition de si l'objet peut être grimpé par le joueur
