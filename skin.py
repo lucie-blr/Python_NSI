@@ -17,6 +17,7 @@ def main():
 	clock = pygame.time.Clock()		#FPS
 
 	text_font = pygame.font.Font(None, 60)	#Text Font
+	text_font2 = pygame.font.Font(None, 30)	#Text Font for coin text
 
 	bg = pygame.image.load(r'bg.gif')	# background annimation
 
@@ -71,10 +72,16 @@ def main():
 
 	# Text
 	white = (255,255,255)
+	with open("data.json", "r") as f:
+		data = json.load(f)
+		coin = data["coin"]
 	text = text_font.render('Buy Skin', True, white)
+	text2 = text_font2.render(f'Coins : {coin}', True, white)
 	# create a rectangular object for the text
 	textRect = text.get_rect()
+	textRect2 = text2.get_rect()
 	textRect.center = (wt, ht)
+	textRect2.center = (WIDTH - (WIDTH-200) , HEIGHT - (HEIGHT-40))
 
 	# transform bg size for every screen
 	if WIDTH == 1920 or FULL == "True":		#for 1920x1080 and Fullscreen
@@ -99,6 +106,7 @@ def main():
 
 		buttons_draw(screen)	#show button
 		screen.blit(text, textRect)	#show text
+		screen.blit(text2, textRect2)	#show coin text
 		
 		mouse = pygame.mouse.get_pos() # get mouse position
 		clock.tick(60)	#fps
