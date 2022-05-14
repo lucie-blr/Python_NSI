@@ -315,6 +315,7 @@ class Level:
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
                     #Death animation
+                    pygame.mixer.music.pause()
                     player.status = 'death'
                     if player.death == 20:
                         main(self.layout_index)  
@@ -337,6 +338,7 @@ class Level:
                         player.status = "win"
                         self.world_shift = 0
                         if player.death == 4:
+                            pygame.mixer.music.pause()
                             run.main()
                         
                 except AttributeError:
@@ -471,6 +473,10 @@ def main(level_map):
         bg = pygame.image.load("./alien/background4.jpg")
 
     spawn = "null"
+    
+    pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.2)
     
     level = Level(level_map, screen, spawn)
 
