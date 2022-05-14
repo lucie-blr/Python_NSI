@@ -10,6 +10,7 @@ def main():
 			b.draw(screen)
 
 	pygame.init()
+	pygame.mixer.music.stop()
 
 	pygame.display.set_caption('NekoDarkLand')	#window title
 	clock = pygame.time.Clock()		#FPS

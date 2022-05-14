@@ -461,20 +461,26 @@ def main(level_map):
     
     if level_map == 1:
         bg = pygame.image.load("./alien/background1.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
     elif level_map == 2:
         bg = pygame.image.load("./alien/background2.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_03_Breaking_the_Chains.mp3')
     elif level_map == 3:
         bg = pygame.image.load("./alien/background3.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
     elif level_map == 4:
         bg = pygame.image.load("./alien/background4.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
     elif level_map == 5:
         bg = pygame.image.load("./alien/background4.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
     elif level_map == 6:
         bg = pygame.image.load("./alien/background4.jpg")
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
 
     spawn = "null"
     
-    pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
+    
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
     
