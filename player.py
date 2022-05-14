@@ -156,7 +156,7 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.image.load("./alien/bullet.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.Ask_bullet = True
-        self.speed = 15
+        self.speed = 50
         self.direction = pygame.math.Vector2(0,0)
         self.direction.x = 0
         self.frame_index = 0
