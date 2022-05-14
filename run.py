@@ -16,6 +16,9 @@ def main():
 
 	logo = pygame.image.load(r'logo.png')	#banner
 	bg = pygame.image.load(r'bg.gif')	# background annimation
+	icon = pygame.image.load(r'./alien/icon.png')
+
+	pygame.display.set_icon(icon)
 
 	buttons = []
 
