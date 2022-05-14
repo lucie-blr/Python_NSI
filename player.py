@@ -159,17 +159,30 @@ class Bullet(pygame.sprite.Sprite):
         self.speed = 15
         self.direction = pygame.math.Vector2(0,0)
         self.direction.x = 0
-
+        self.frame_index = 0
+        full_path=f'./alien/bullet/'
+        self.animations = import_folder(full_path)
 
     def update(self):
         self.bullet
         self.rect.x += self.speed * self.direction.x
+        self.frame_index += 0.5 #Ajout au numéro de frame la vitesse d'animation
+        if self.frame_index >= len(self.animations): #si le numéro de frame est supérieur ou égale à la taille de la liste d'image
+            self.frame_index = 0 #le numéro d'image vaut 0
+                        
+        image = self.animations[int(self.frame_index)] #défini l'image à l'arrondi du numéro d'image
+    
+        if self.direction.x == -1: #si le joueur est tourné vers la droite, retourner l'image
+            flipped_image = pygame.transform.flip(image, True, False)
+            self.image = flipped_image
+        else:
+            self.image = image
 
 
     def bullet(self, player):
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y
-        image = pygame.image.load("./alien/bullet.png")
+        image = self.image
 
         
         if player.facing_right == False:
