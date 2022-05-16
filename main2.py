@@ -89,7 +89,7 @@ class Level:
                 if cell == 'L':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_sign((x,y),tile_size)
+                    tile = Tile_sign((x, y), tile_size)
                     tile.sign[1] = messages[sign_index]
                     self.tiles.add(tile)
                     print(sign_index)
