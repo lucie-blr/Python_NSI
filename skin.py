@@ -20,6 +20,7 @@ def main():
 	text_font2 = pygame.font.Font(None, 30)	#Text Font for coin text
 
 	bg = pygame.image.load(r'bg.gif')	# background annimation
+	cash_iamge = pygame.image.load(r'./alien/cash.png')
 
 	buttons = []
 
@@ -48,12 +49,25 @@ def main():
 	wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
 
 	#button
+	buy1_button = button.Button('Buy for 10', 200, 40, (w1, h1), 5)
+	buy2_button = button.Button('Buy for 20', 200, 40, (w2, h1), 5)
+	buy3_button = button.Button('Buy for 40', 200, 40, (w3, h1), 5)
+	buy4_button = button.Button('Buy for 60', 200, 40, (w1, h2), 5)
+	buy5_button = button.Button('Buy for 100', 200, 40, (w2, h2), 5)
+	buy6_button = button.Button('Buy for 150', 200, 40, (w3, h2), 5)
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
+	buttons.append(buy1_button)
+	buttons.append(buy2_button)
+	buttons.append(buy3_button)
+	buttons.append(buy4_button)
+	buttons.append(buy5_button)
+	buttons.append(buy6_button)
 	buttons.append(back_button)
 
 	frame_index = 0
+	frame_index2 = 0
 
-	def skin(frame_index):
+	def skin(frame_index, frame_index2):
 		with open("data.json", "r") as f:	#config size screen
 			data = json.load(f)
 
@@ -64,11 +78,18 @@ def main():
 		if frame_index >= len(animations): #si le numéro de frame est supérieur ou égale à la taille de la liste d'image
 			frame_index = 0 #le numéro d'image vaut 0
 		image = animations[int(frame_index)] #défini l'image à l'arrondi du numéro d'image
+
+		full_path2 = './alien/blue/idle'
+		animations = import_folder(full_path2)
+		frame_index2 += 0.15 #Ajout au numéro de frame la vitesse d'animation
+		if frame_index2 >= len(animations): #si le numéro de frame est supérieur ou égale à la taille de la liste d'image
+			frame_index2 = 0 #le numéro d'image vaut 0
+		image2 = animations[int(frame_index2)] #défini l'image à l'arrondi du numéro d'image
 		
 
 		screen.blit(bg, (0, 0))
 		screen.blit(image, (200, 200))
-		return frame_index
+		return frame_index, frame_index2
 
 	# Text
 	white = (255,255,255)
@@ -77,6 +98,7 @@ def main():
 		coin = data["coin"]
 	text = text_font.render('Buy Skin', True, white)
 	text2 = text_font2.render(f'Coins : {coin}', True, white)
+
 	# create a rectangular object for the text
 	textRect = text.get_rect()
 	textRect2 = text2.get_rect()
@@ -90,9 +112,13 @@ def main():
 		bg = pygame.transform.scale(bg, (1280, 720))
 	elif WIDTH == 1000 and FULL == "None":	#for 1000x600
 		bg = pygame.transform.scale(bg, (1000, 600))
-						
+
+	def coin_load():
+		if coin <= 99:
+			w_coin_total = 
+
 	while True:
-		frame_index = skin(frame_index)	#show level image
+		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
@@ -107,6 +133,7 @@ def main():
 		buttons_draw(screen)	#show button
 		screen.blit(text, textRect)	#show text
 		screen.blit(text2, textRect2)	#show coin text
+		coin_load()
 		
 		mouse = pygame.mouse.get_pos() # get mouse position
 		clock.tick(60)	#fps

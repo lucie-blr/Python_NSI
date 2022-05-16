@@ -51,8 +51,8 @@ def main():
 	#button
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
 	skin_button = button.Button('Skin', 100, 40, (w, h), 5)
-	buttons.append(back_button)
 	buttons.append(skin_button)
+	buttons.append(back_button)
 
 	def img():
 		with open("data.json", "r") as f:	#config size screen
