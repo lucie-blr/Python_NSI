@@ -191,6 +191,7 @@ class Level:
                     #Death animation
                     player.status = 'death'
                     if player.death == 20:
+                        pygame.mixer.music.pause()
                         main(self.layout_index)  
             if sprite.rect.colliderect(bullet.rect):
                 try:
@@ -315,9 +316,9 @@ class Level:
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
                     #Death animation
-                    pygame.mixer.music.pause()
                     player.status = 'death'
                     if player.death == 20:
+                        pygame.mixer.music.pause()
                         main(self.layout_index)  
                 
         for sprite in self.tiles.sprites():
