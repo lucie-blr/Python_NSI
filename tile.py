@@ -102,6 +102,13 @@ class Tile_door(Tile):
         self.rect = self.image.get_rect(topleft = pos)
         self.door = True
        
+class Tile_box(Tile):
+    def __init__(self, pos):
+        super().__init__(pos)
+        self.image = pygame.image.load("./alien/boxAlt.png")
+        self.rect = self.image.get_rect(topleft=pos)
+        self.mob = True
+
 #### SPIKES #### 
 class Tile_spike(Tile):
     def __init__(self, pos):

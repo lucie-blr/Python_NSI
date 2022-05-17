@@ -137,20 +137,25 @@ class Level:
                     y = row_index * tile_size + y_patch
                     tile = Tile_end((x,y) )
                     self.tiles.add(tile)
-                if cell == 'B':
+                if cell == '8':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     player_sprite = Bullet((x,y))
                     self.bullet.add(player_sprite)
+                if cell == 'K':
+                    x = col_index * tile_size - x_patch
+                    y = row_index * tile_size + y_patch
+                    tile = Tile_key((x,y) )
+                    self.tiles.add(tile)
                 if cell == 'D':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_door((x,y) )
                     self.tiles.add(tile)
-                if cell == 'K':
+                if cell == 'B':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_key((x,y) )
+                    tile = Tile_box((x,y) )
                     self.tiles.add(tile)
                 if cell == 'M':
                     x = col_index * tile_size - x_patch
@@ -205,6 +210,7 @@ class Level:
                             json.dump(data,f)
                         bullet.direction.x = 0
                         bullet.rect.y = 2000    
+                        bullet.Ask_bullet = True 
                 
                 except AttributeError:
                     pass
@@ -214,16 +220,25 @@ class Level:
         for sprite in self.tiles.sprites():
             
             if sprite.rect.colliderect(bullet.rect):
-                try:
-                    if sprite.open:
-                        pass
-                    else:
-                        bullet.direction.x = 0
-                        bullet.rect.y = 2000   
-                except AttributeError:
-                    bullet.direction.x = 0
-                    bullet.rect.y = 2000   
                 
+                if sprite.open:
+                    pass
+                elif sprite.mob:
+                        sprite.rect.y = -2000
+                        player.coin += 1
+                        with open("data.json", "r") as f:	#open and read
+                            data = json.load(f)
+                        data["coin"] += 1
+                        with open("data.json", "w") as f:	#add coin
+                            json.dump(data,f)
+                        bullet.direction.x = 0
+                        bullet.rect.y = 2000  
+                        bullet.Ask_bullet = True  
+                else:
+                    bullet.direction.x = 0
+                    bullet.rect.y = 2000  
+                    bullet.Ask_bullet = True  
+                     
             
             if sprite.rect.colliderect(player.rect):
                     if sprite.end:
@@ -238,13 +253,10 @@ class Level:
                         textRect.center = (WIDTH/2, HEIGHT/2)
                         screen.blit(text, textRect)
                         player.speed = 0
-                        player.status = "idle"
+                        player.status = "win"
                         self.world_shift = 0
                         if player.death == 4:
-                            level_map = level_map + 1
-                            data["unlock"][f"map{level_map}"] = "True"
-                            with open (f"data.json", "w") as f:
-                                json.dump(data,f)
+                            pygame.mixer.music.pause()
                             select.main()
                     if sprite.key:
                         player.key = player.key + 1
@@ -329,7 +341,7 @@ class Level:
                         self.world_shift = 0
                         if player.death == 4:
                             pygame.mixer.music.pause()
-                            run.main()
+                            select.main()
 
                     if sprite.door:
                         if player.key > 0:
