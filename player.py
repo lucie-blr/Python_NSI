@@ -162,6 +162,7 @@ class Bullet(pygame.sprite.Sprite):
         self.frame_index = 0
         full_path=f'./alien/bullet/'
         self.animations = import_folder(full_path)
+        self.cooldown = 0
 
     def update(self):
         self.bullet
@@ -180,22 +181,23 @@ class Bullet(pygame.sprite.Sprite):
 
 
     def bullet(self, player):
-        self.rect.x = player.rect.x
-        self.rect.y = player.rect.y
-        image = self.image
-
-        
-        if player.facing_right == False:
-            self.direction.x = -1
-            flipped_image = pygame.transform.flip(image, True, False)
-            self.image = flipped_image
+        if (time.time() > self.cooldown + 2):
+            self.rect.x = player.rect.x
+            self.rect.y = player.rect.y
+            image = self.image
             
-
-
-        elif player.facing_right == True:
-            self.direction.x = 1 
-            self.image = image
+            if player.facing_right == False:
+                self.direction.x = -1
+                flipped_image = pygame.transform.flip(image, True, False)
+                self.image = flipped_image
                 
+
+
+            elif player.facing_right == True:
+                self.direction.x = 1 
+                self.image = image
+                    
+            self.cooldown = time.time()
                 
             
 #Tutoriel : Balle

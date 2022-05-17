@@ -196,19 +196,34 @@ class Level:
             if sprite.rect.colliderect(bullet.rect):
                 try:
                     if sprite.mob:
-                        sprite.rect.y = 2000
+                        sprite.rect.y = -2000
                         player.coin += 1
                         with open("data.json", "r") as f:	#open and read
                             data = json.load(f)
                         data["coin"] += 1
                         with open("data.json", "w") as f:	#add coin
                             json.dump(data,f)
+                        bullet.direction.x = 0
+                        bullet.rect.y = 2000    
+                
                 except AttributeError:
                     pass
+
+                
         
         for sprite in self.tiles.sprites():
             
-            
+            if sprite.rect.colliderect(bullet.rect):
+                try:
+                    if sprite.open:
+                        pass
+                    else:
+                        bullet.direction.x = 0
+                        bullet.rect.y = 2000   
+                except AttributeError:
+                    bullet.direction.x = 0
+                    bullet.rect.y = 2000   
+                
             
             if sprite.rect.colliderect(player.rect):
                 try: #end
