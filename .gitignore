@@ -15,3 +15,4 @@ __pycache__/settings.cpython-310.pyc
 cache/pause-screen-cache.png
 __pycache__/*
 *.pyc
+cache/pause-screen-cache.png
