@@ -89,6 +89,7 @@ def main():
 
 		screen.blit(bg, (0, 0))
 		screen.blit(image, (200, 200))
+		screen.blit(image2, (400, 200))
 		return frame_index, frame_index2
 
 	# Text
