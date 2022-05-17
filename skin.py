@@ -65,23 +65,23 @@ def main():
 	else:
 		buy1_button = button.Button('Buy for 0', 200, 40, (w1, h1), 5)
 	if s2 == "True":	#verif skin dispo
-		buy2_button = button.Button('Select', 200, 40, (w1, h1), 5)
+		buy2_button = button.Button('Select', 200, 40, (w2, h1), 5)
 	else:
 		buy2_button = button.Button('Buy for 20', 200, 40, (w2, h1), 5)
 	if s3 == "True":	#verif skin dispo
-		buy3_button = button.Button('Select', 200, 40, (w1, h1), 5)
+		buy3_button = button.Button('Select', 200, 40, (w3, h1), 5)
 	else:
 		buy3_button = button.Button('Buy for 40', 200, 40, (w3, h1), 5)
 	if s4 == "True":	#verif skin dispo
-		buy4_button = button.Button('Select', 200, 40, (w1, h1), 5)
+		buy4_button = button.Button('Select', 200, 40, (w1, h2), 5)
 	else:
 		buy4_button = button.Button('Buy for 60', 200, 40, (w1, h2), 5)
 	if s5 == "True":	#verif skin dispo
-		buy5_button = button.Button('Select', 200, 40, (w1, h1), 5)
+		buy5_button = button.Button('Select', 200, 40, (w2, h2), 5)
 	else:
 		buy5_button = button.Button('Buy for 100', 200, 40, (w2, h2), 5)
 	if s6 == "True":	#verif skin dispo
-		buy1_button = button.Button('Select', 200, 40, (w1, h1), 5)
+		buy1_button = button.Button('Select', 200, 40, (w3, h2), 5)
 	else:
 		buy6_button = button.Button('Buy for 150', 200, 40, (w3, h2), 5)
 
