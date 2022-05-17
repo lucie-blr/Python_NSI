@@ -175,7 +175,9 @@ class Tile_sign(pygame.sprite.Sprite):
         self.damage = False
         self.climb = False
         self.sign = [True, "Use left and right keys to move"]
- 
+        self.open = True
+        
+        
     def update(self, x_shift):
         self.rect.x += x_shift
         

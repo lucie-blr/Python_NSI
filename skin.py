@@ -115,7 +115,7 @@ def main():
 
 	def coin_load():
 		if coin <= 99:
-			w_coin_total = 
+			w_coin_total = 0
 
 	while True:
 		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
