@@ -48,7 +48,7 @@ def main():
 	wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
 
 	#button
-	buy1_button = button.Button('Buy for 10', 200, 40, (w1, h1), 5)
+	buy1_button = button.Button('Select', 200, 40, (w1, h1), 5)
 	buy2_button = button.Button('Buy for 20', 200, 40, (w2, h1), 5)
 	buy3_button = button.Button('Buy for 40', 200, 40, (w3, h1), 5)
 	buy4_button = button.Button('Buy for 60', 200, 40, (w1, h2), 5)
@@ -130,6 +130,8 @@ def main():
 		cash_image_total = pygame.transform.scale(cash_image, (25, 25))
 		screen.blit(cash_image_total, (w_coin_total, h_coin_total))
 		#
+		w_coin = 1
+		h_coin = 1
 		for i in range(2):
 			for i in range(3):
 				print("vroum")
