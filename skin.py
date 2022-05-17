@@ -162,12 +162,15 @@ def main():
 			h_coin_total = 70
 		cash_image_total = pygame.transform.scale(cash_image, (25, 25))
 		screen.blit(cash_image_total, (w_coin_total, h_coin_total))
-		#
-		w_coin = 1
-		h_coin = 1
+		#coin img position
+		# w_coin = w1
+		# h_coin = h1
 		# for i in range(2):
 		# 	for i in range(3):
-		# 		print("vroum")
+		# 		screen.blit(cash_image_total, (w_coin+165, h_coin))
+		# 		w_coin = w2
+		# 	h_coin = h2
+
 	while True:
 		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
 		for event in pygame.event.get():
@@ -180,6 +183,10 @@ def main():
 
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
+
+					if s1 == "True" and coin <=0:
+						if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
+							print("p")
 
 		buttons_draw(screen)	#show button
 		screen.blit(text, textRect)	#show text
