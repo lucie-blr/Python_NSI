@@ -243,7 +243,7 @@ class Level:
                         self.world_shift = 0
                         if player.death == 4:
                             level_map = level_map + 1
-                            data["unlock"][0][f"map{level_map}"] = "True"
+                            data["unlock"][f"map{level_map}"] = "True"
                             with open (f"data.json", "w") as f:
                                 json.dump(data,f)
                             select.main()
