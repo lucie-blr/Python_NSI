@@ -54,42 +54,42 @@ class Level:
                 if cell == 'T':
                     x = col_index * tile_size - x_patch 
                     y = row_index * tile_size + y_patch
-                    tile = Tile((x,y),tile_size)
+                    tile = Tile((x,y) )
                     self.tiles.add(tile)
                 if cell == 'G':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_ground((x,y),tile_size)
+                    tile = Tile_ground((x,y) )
                     self.tiles.add(tile)
                 if cell == 'E':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_earth((x,y),tile_size)
+                    tile = Tile_earth((x,y) )
                     self.tiles.add(tile)
                 if cell == 'W':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_wall((x,y),tile_size)
+                    tile = Tile_wall((x,y) )
                     self.tiles.add(tile)
                 if cell == 'U':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_unc_wall((x,y),tile_size)
+                    tile = Tile_unc_wall((x,y) )
                     self.tiles.add(tile)
                 if cell == 'A':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_bg_wall((x,y),tile_size)
+                    tile = Tile_bg_wall((x,y) )
                     self.tiles.add(tile)
                 if cell == 'V':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_bg_glass((x,y),tile_size)
+                    tile = Tile_bg_glass((x,y) )
                     self.tiles.add(tile)
                 if cell == 'L':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_sign((x, y), tile_size)
+                    tile = Tile_sign((x, y) )
                     tile.sign[1] = messages[sign_index]
                     self.tiles.add(tile)
                     print(sign_index)
@@ -105,37 +105,37 @@ class Level:
                 if cell == '↑':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_spike((x,y+48),tile_size)
+                    tile = Tile_spike((x,y+48) )
                     self.tiles.add(tile)
                 if cell == '↟':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_fake_spike((x,y+48),tile_size)
+                    tile = Tile_fake_spike((x,y+48) )
                     self.tiles.add(tile)
                 if cell == '→':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_right_spike((x,y+48),tile_size)
+                    tile = Tile_right_spike((x,y+48) )
                     self.tiles.add(tile)
                 if cell == '←':
                     x = col_index * tile_size - x_patch + 24
                     y = row_index * tile_size + y_patch
-                    tile = Tile_left_spike((x,y+48),tile_size)
+                    tile = Tile_left_spike((x,y+48) )
                     self.tiles.add(tile)
                 if cell == '↓':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch - 24
-                    tile = Tile_bottom_spike((x,y+48),tile_size)
+                    tile = Tile_bottom_spike((x,y+48) )
                     self.tiles.add(tile)
                 if cell == 'Y':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_s((x,y),tile_size)
+                    tile = Tile_s((x,y) )
                     self.tiles.add(tile)
                 if cell == 'F':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_end((x,y),tile_size)
+                    tile = Tile_end((x,y) )
                     self.tiles.add(tile)
                 if cell == 'B':
                     x = col_index * tile_size - x_patch
@@ -145,17 +145,17 @@ class Level:
                 if cell == 'D':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_door((x,y), tile_size)
+                    tile = Tile_door((x,y) )
                     self.tiles.add(tile)
                 if cell == 'K':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Tile_key((x,y), tile_size)
+                    tile = Tile_key((x,y) )
                     self.tiles.add(tile)
                 if cell == 'M':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
-                    tile = Mob((x,y), tile_size)
+                    tile = Mob((x,y) )
                     self.mobs.add(tile)
     def scroll_x(self):
         player = self.player.sprite
@@ -226,7 +226,6 @@ class Level:
                 
             
             if sprite.rect.colliderect(player.rect):
-                try: #end
                     if sprite.end:
                         with open("data.json", "r") as f:	#config size screen
                             data = json.load(f)
@@ -247,29 +246,20 @@ class Level:
                             with open (f"data.json", "w") as f:
                                 json.dump(data,f)
                             select.main()
-                        
-                except AttributeError: 
-                    
-                
-                    try:
-                        if sprite.key:
-                            player.key = player.key + 1
-                            sprite.rect.y = sprite.rect.y + 2000
+                    if sprite.key:
+                        player.key = player.key + 1
+                        sprite.rect.y = sprite.rect.y + 2000
                             
-                    except AttributeError:
-                        pass
+                 
+                    if sprite.door:
+                        if player.key > 0:
+                            player.key -= 1
+                            sprite.door = False
+                            sprite.image = sprite.open_image
+                            sprite.open = True
+                            
                     
-                    try:
-                        if sprite.door:
-                            if player.key > 0:
-                                player.key -= 1
-                                sprite.door = False
-                                sprite.image = sprite.open_image
-                                sprite.open = True
-                                
                     
-                    except AttributeError:
-                        pass
                     
                     if sprite.sign[0]:
                         
@@ -280,43 +270,28 @@ class Level:
                         textRect.center = (sprite.rect.x, sprite.rect.y - 48)
                         screen.blit(text, textRect)
                         
-                    else:    
+                    if sprite.damage == True:
                         
-                        if sprite.damage == True:
+                        #Death animation
+                        player.status = 'death'
+                        if player.death == 20:
                             
-                            #Death animation
-                            player.status = 'death'
-                            if player.death == 20:
-                                
-                                main(self.layout_index)  
-                        
-                        else:    
-                            
-                            try:
-                                if sprite.open:
-                                    pass
-                                else:
-                                    if player.direction.x < 0:
-                                        player.rect.left = sprite.rect.right
-                                    if sprite.climb:
-                                        player.direction.y = 1
-                                        player.double_jump = 1
-                                    elif player.direction.x > 0:
-                                        player.rect.right = sprite.rect.left
-                                        if sprite.climb:
-                                            player.direction.y = 1
-                                            player.double_jump = 1
-                            except AttributeError: 
-                                if player.direction.x < 0:
-                                    player.rect.left = sprite.rect.right
-                                    if sprite.climb:
-                                        player.direction.y = 1
-                                        player.double_jump = 1
-                                elif player.direction.x > 0:
-                                    player.rect.right = sprite.rect.left
-                                    if sprite.climb:
-                                        player.direction.y = 1
-                                        player.double_jump = 1
+                            main(self.layout_index)  
+                    
+                     
+                    if sprite.open:
+                        pass
+                    else:
+                        if player.direction.x < 0:
+                            player.rect.left = sprite.rect.right
+                        if sprite.climb:
+                            player.direction.y = 1
+                            player.double_jump = 1
+                        elif player.direction.x > 0:
+                            player.rect.right = sprite.rect.left
+                            if sprite.climb:
+                                player.direction.y = 1
+                                player.double_jump = 1
                                 
                                 
             else: player.gravity = 0.8
@@ -338,7 +313,6 @@ class Level:
                 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
-                try:
                     if sprite.end:
                         with open("data.json", "r") as f:	#config size screen
                             data = json.load(f)
@@ -356,22 +330,14 @@ class Level:
                         if player.death == 4:
                             pygame.mixer.music.pause()
                             run.main()
-                        
-                except AttributeError:
-                    
-          
-                    try:
-                        if sprite.door:
-                            if player.key > 0:
-                                player.key -= 1
-                                sprite.door = False
-                                sprite.image = sprite.open_image
-                                sprite.open = True
+
+                    if sprite.door:
+                        if player.key > 0:
+                            player.key -= 1
+                            sprite.door = False
+                            sprite.image = sprite.open_image
+                            sprite.open = True
                                 
-                    
-                    except AttributeError:
-                        pass
-                     
                     if sprite.sign[0]:
                         
                         text_font = pygame.font.Font(None, 40)  #Text Font
@@ -382,36 +348,24 @@ class Level:
                         
                         textRect.center = (sprite.rect.x, sprite.rect.y - 48)
                         screen.blit(text, textRect)
-                    else:    
-                        
-                        if sprite.damage == True:
-                        #Death animation
-                            player.status = 'death'
-                        if player.death == 20:
-                            main(self.layout_index)  
-                            
-                        else:
-                            try:
-                                if sprite.open:
-                                    pass
-                                else:
-                                    if player.direction.y > 0:
-                                        player.rect.bottom = sprite.rect.top
-                                        player.direction.y = 0
-                                        player.double_jump = 1
-                                        player.time = time.time()
-                                    elif player.direction.y < 0:
-                                        player.rect.top = sprite.rect.bottom
-                                        player.direction.y = 0
-                            except AttributeError:
-                                if player.direction.y > 0:
-                                    player.rect.bottom = sprite.rect.top
-                                    player.direction.y = 0
-                                    player.double_jump = 1
-                                    player.time = time.time()
-                                elif player.direction.y < 0:
-                                    player.rect.top = sprite.rect.bottom
-                                    player.direction.y = 0
+
+                    if sprite.damage == True:
+                    #Death animation
+                        player.status = 'death'
+                    if player.death == 20:
+                        main(self.layout_index)  
+
+                    if sprite.open:
+                        pass
+                    else:
+                        if player.direction.y > 0:
+                            player.rect.bottom = sprite.rect.top
+                            player.direction.y = 0
+                            player.double_jump = 1
+                            player.time = time.time()
+                        elif player.direction.y < 0:
+                            player.rect.top = sprite.rect.bottom
+                            player.direction.y = 0
                     
     def bullet_update(self):
         player = self.player.sprite

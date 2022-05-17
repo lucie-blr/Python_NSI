@@ -25,7 +25,6 @@ class Tile_wall(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/wall.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.climb = True
         
 class Tile_unc_wall(Tile_wall):
@@ -37,59 +36,50 @@ class Tile_bg_wall(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/wall-ar.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.open = True
 
 class Tile_bg_glass(Tile_bg_wall):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/glass.png")
-        self.rect = self.image.get_rect(topleft = pos)
 
 class Tile_ground(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/sss3.png")
-        self.rect = self.image.get_rect(topleft = pos)
 
 class Tile_s(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/yyy.png")
-        self.rect = self.image.get_rect(topleft = pos)
         
 class Tile_earth(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/ground3.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.climb = True
 
 class Tile_checkpoint(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/Sans titre.png")
-        self.rect = self.image.get_rect(topleft = pos)
         
 class Tile_sign(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/sign.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.sign[0] = True
 
 class Tile_end(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/flag.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.end = True
         
 class Tile_key(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/key.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.key = True
         self.open = True
         
@@ -98,7 +88,6 @@ class Tile_door(Tile):
         super().__init__(pos)
         self.open_image = pygame.image.load("./alien/door.png")
         self.image = pygame.image.load("./alien/close_door.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.door = True
        
 #### SPIKES #### 
@@ -119,19 +108,16 @@ class Tile_left_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/left_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
 
 class Tile_right_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/right_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
 
 class Tile_bottom_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/down_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
 
 
 
@@ -140,7 +126,6 @@ class Mob(Tile):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/right.png")
-        self.rect = self.image.get_rect(topleft = pos)
         self.damage = True
         self.mob = True
         self.speed = 5
