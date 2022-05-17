@@ -284,9 +284,9 @@ class Level:
                     else:
                         if player.direction.x < 0:
                             player.rect.left = sprite.rect.right
-                        if sprite.climb:
-                            player.direction.y = 1
-                            player.double_jump = 1
+                            if sprite.climb:
+                                player.direction.y = 1
+                                player.double_jump = 1
                         elif player.direction.x > 0:
                             player.rect.right = sprite.rect.left
                             if sprite.climb:
