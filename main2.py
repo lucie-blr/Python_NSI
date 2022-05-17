@@ -257,6 +257,10 @@ class Level:
                         self.world_shift = 0
                         if player.death == 4:
                             pygame.mixer.music.pause()
+                            level_map += 1
+                            data["unlock"][f"map{level_map}"] = "True"
+                            with open("data.json","w") as f:
+                                json.dump(data,f)
                             select.main()
                     if sprite.key:
                         player.key = player.key + 1
@@ -341,6 +345,10 @@ class Level:
                         self.world_shift = 0
                         if player.death == 4:
                             pygame.mixer.music.pause()
+                            level_map += 1
+                            data["unlock"][f"map{level_map}"] = "True"
+                            with open("data.json","w") as f:
+                                json.dump(data,f)
                             select.main()
 
                     if sprite.door:
@@ -414,6 +422,14 @@ class Level:
         textRect = text.get_rect()
         textRect.center = (WIDTH - (WIDTH-200) , HEIGHT - (HEIGHT-20))
         screen.blit(text, textRect)
+        
+        if self.player.sprite.death == 4 and self.player.sprite.win:
+            pygame.mixer.music.pause()
+            level_map += 1
+            data["unlock"][f"map{level_map}"] = "True"
+            with open("data.json","w") as f:
+                json.dump(data,f)
+            select.main()
 
 def main(level_map):
     def buttons_draw(screen):

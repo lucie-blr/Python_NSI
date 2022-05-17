@@ -127,19 +127,19 @@ class Tile_left_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/left_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
+        self.rect = self.image.get_rect(bottomleft = pos)
 
 class Tile_right_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/right_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
+        self.rect = self.image.get_rect(bottomleft = pos)
 
 class Tile_bottom_spike(Tile_spike):
     def __init__(self, pos):
         super().__init__(pos)
         self.image = pygame.image.load("./alien/down_spike.png")
-        self.rect = self.image.get_rect(topleft = pos)
+        self.rect = self.image.get_rect(bottomleft = pos)
 
 
 

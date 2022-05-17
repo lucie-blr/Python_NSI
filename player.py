@@ -77,7 +77,7 @@ class Player(pygame.sprite.Sprite): #Création de la class
                 self.image = animation[0] #l'image du joueur est la première image de la liste d'image
                 time.sleep(0.5) 
                 
-                self.death = self.death + 1 
+                self.death += 1 
                 self.direction.x = 0 
                 self.direction.y = 0
             return
