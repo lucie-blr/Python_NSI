@@ -20,8 +20,7 @@ def main():
 	text_font2 = pygame.font.Font(None, 30)	#Text Font for coin text
 
 	bg = pygame.image.load(r'bg.gif')	# background annimation
-	cash_iamge = pygame.image.load(r'./alien/cash.png')
-
+	
 	buttons = []
 
 	with open("data.json", "r") as f:	#config size screen
@@ -114,8 +113,26 @@ def main():
 		bg = pygame.transform.scale(bg, (1000, 600))
 
 	def coin_load():
-		if coin <= 99:
-			w_coin_total = 1
+		cash_image = pygame.image.load(r'./alien/cash.png')	#image for coin
+		t = len(str(coin))
+		if t <= 99:
+			w_coin_total = 70
+			h_coin_total = 70
+		if t <= 999:
+			w_coin_total = 70
+			h_coin_total = 70
+		if t <= 9999:
+			w_coin_total = 70
+			h_coin_total = 70
+		else:
+			w_coin_total = 70
+			h_coin_total = 70
+		cash_image_total = pygame.transform.scale(cash_image, (25, 25))
+		screen.blit(cash_image_total, (w_coin_total, h_coin_total))
+		#
+		for i in range(2):
+			for i in range(3):
+				print("vroum")
 
 	while True:
 		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
