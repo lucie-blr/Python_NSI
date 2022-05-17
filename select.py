@@ -57,12 +57,12 @@ def main():
 	def img():
 		with open("data.json", "r") as f:	#config size screen
 			data = json.load(f)
-			map1 = data["unlock"][0]["map1"]
-			map2 = data["unlock"][0]["map2"]
-			map3 = data["unlock"][0]["map3"]
-			map4 = data["unlock"][0]["map4"]
-			map5 = data["unlock"][0]["map5"]
-			map6 = data["unlock"][0]["map6"]
+			map1 = data["unlock"]["map1"]
+			map2 = data["unlock"]["map2"]
+			map3 = data["unlock"]["map3"]
+			map4 = data["unlock"]["map4"]
+			map5 = data["unlock"]["map5"]
+			map6 = data["unlock"]["map6"]
 		#image level (button)
 		if map1 == "True":
 			level_1 = pygame.image.load(r'./level-image/1.png')	#image level 1
@@ -123,12 +123,12 @@ def main():
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
 					with open("data.json", "r") as f:	#config size screen
 						data = json.load(f)
-						map1 = data["unlock"][0]["map1"]
-						map2 = data["unlock"][0]["map2"]
-						map3 = data["unlock"][0]["map3"]
-						map4 = data["unlock"][0]["map4"]
-						map5 = data["unlock"][0]["map5"]
-						map6 = data["unlock"][0]["map6"]
+						map1 = data["unlock"]["map1"]
+						map2 = data["unlock"]["map2"]
+						map3 = data["unlock"]["map3"]
+						map4 = data["unlock"]["map4"]
+						map5 = data["unlock"]["map5"]
+						map6 = data["unlock"]["map6"]
 					if map1 == "True":	#verif unlock level
 						if w1 <= mouse[0] <= w1+200 and h1 <= mouse[1] <= h1+113:	#verif click level
 							main2.main(1)	#run level

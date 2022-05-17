@@ -49,13 +49,44 @@ def main():
 	wt, ht = WIDTH/2, HEIGHT-(HEIGHT-70)	#text position (select level)
 
 	#button
-	buy1_button = button.Button('Select', 200, 40, (w1, h1), 5)
-	buy2_button = button.Button('Buy for 20', 200, 40, (w2, h1), 5)
-	buy3_button = button.Button('Buy for 40', 200, 40, (w3, h1), 5)
-	buy4_button = button.Button('Buy for 60', 200, 40, (w1, h2), 5)
-	buy5_button = button.Button('Buy for 100', 200, 40, (w2, h2), 5)
-	buy6_button = button.Button('Buy for 150', 200, 40, (w3, h2), 5)
+	with open("data.json", "r") as f:	#config size screen
+		data = json.load(f)
+		s1 = data["skin"]["1"]
+		s2 = data["skin"]["2"]
+		s3 = data["skin"]["3"]
+		s4 = data["skin"]["4"]
+		s5 = data["skin"]["5"]
+		s6 = data["skin"]["6"]
+		print(s1)
+		print(s2)
+		print(s3)
+	if s1 == "True":	#verif skin dispo
+		buy1_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy1_button = button.Button('Buy for 0', 200, 40, (w1, h1), 5)
+	if s2 == "True":	#verif skin dispo
+		buy2_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy2_button = button.Button('Buy for 20', 200, 40, (w2, h1), 5)
+	if s3 == "True":	#verif skin dispo
+		buy3_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy3_button = button.Button('Buy for 40', 200, 40, (w3, h1), 5)
+	if s4 == "True":	#verif skin dispo
+		buy4_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy4_button = button.Button('Buy for 60', 200, 40, (w1, h2), 5)
+	if s5 == "True":	#verif skin dispo
+		buy5_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy5_button = button.Button('Buy for 100', 200, 40, (w2, h2), 5)
+	if s6 == "True":	#verif skin dispo
+		buy1_button = button.Button('Select', 200, 40, (w1, h1), 5)
+	else:
+		buy6_button = button.Button('Buy for 150', 200, 40, (w3, h2), 5)
+
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
+
 	buttons.append(buy1_button)
 	buttons.append(buy2_button)
 	buttons.append(buy3_button)
@@ -134,9 +165,9 @@ def main():
 		#
 		w_coin = 1
 		h_coin = 1
-		for i in range(2):
-			for i in range(3):
-				print("vroum")
+		# for i in range(2):
+		# 	for i in range(3):
+		# 		print("vroum")
 	while True:
 		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
 		for event in pygame.event.get():
