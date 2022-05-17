@@ -194,17 +194,20 @@ class Level:
                         pygame.mixer.music.pause()
                         main(self.layout_index)  
             if sprite.rect.colliderect(bullet.rect):
-                if sprite.mob:
-                    sprite.rect.y = -2000
-                    player.coin += 1
-                    with open("data.json", "r") as f:	#open and read
-                        data = json.load(f)
-                    data["coin"] += 1
-                    with open("data.json", "w") as f:	#add coin
-                        json.dump(data,f)
-                    bullet.direction.x = 0
-                    bullet.rect.y = 2000    
-            
+                try:
+                    if sprite.mob:
+                        sprite.rect.y = -2000
+                        player.coin += 1
+                        with open("data.json", "r") as f:	#open and read
+                            data = json.load(f)
+                        data["coin"] += 1
+                        with open("data.json", "w") as f:	#add coin
+                            json.dump(data,f)
+                        bullet.direction.x = 0
+                        bullet.rect.y = 2000    
+                
+                except AttributeError:
+                    pass
 
                 
         
@@ -223,75 +226,75 @@ class Level:
                 
             
             if sprite.rect.colliderect(player.rect):
-                if sprite.end:
-                    with open("data.json", "r") as f:	#config size screen
-                        data = json.load(f)
-                        WIDTH = data["WIDTH"]
-                        HEIGHT = data["HEIGHT"]
-                    text_font = pygame.font.Font(None, 60)  #Text Font
-                    white = (255,255,255)
-                    text = text_font.render("Level finished !", True, white)
-                    textRect = text.get_rect()
-                    textRect.center = (WIDTH/2, HEIGHT/2)
-                    screen.blit(text, textRect)
-                    player.speed = 0
-                    player.status = "idle"
-                    self.world_shift = 0
-                    if player.death == 4:
-                        level_map = level_map + 1
-                        data["unlock"][0][f"map{level_map}"] = "True"
-                        with open (f"data.json", "w") as f:
-                            json.dump(data,f)
-                        select.main()
-                if sprite.key:
-                    player.key = player.key + 1
-                    sprite.rect.y = sprite.rect.y + 2000
+                    if sprite.end:
+                        with open("data.json", "r") as f:	#config size screen
+                            data = json.load(f)
+                            WIDTH = data["WIDTH"]
+                            HEIGHT = data["HEIGHT"]
+                        text_font = pygame.font.Font(None, 60)  #Text Font
+                        white = (255,255,255)
+                        text = text_font.render("Level finished !", True, white)
+                        textRect = text.get_rect()
+                        textRect.center = (WIDTH/2, HEIGHT/2)
+                        screen.blit(text, textRect)
+                        player.speed = 0
+                        player.status = "idle"
+                        self.world_shift = 0
+                        if player.death == 4:
+                            level_map = level_map + 1
+                            data["unlock"][f"map{level_map}"] = "True"
+                            with open (f"data.json", "w") as f:
+                                json.dump(data,f)
+                            select.main()
+                    if sprite.key:
+                        player.key = player.key + 1
+                        sprite.rect.y = sprite.rect.y + 2000
+                            
+                 
+                    if sprite.door:
+                        if player.key > 0:
+                            player.key -= 1
+                            sprite.door = False
+                            sprite.image = sprite.open_image
+                            sprite.open = True
+                            
+                    
+                    
+                    
+                    if sprite.sign[0]:
                         
-                
-                if sprite.door:
-                    if player.key > 0:
-                        player.key -= 1
-                        sprite.door = False
-                        sprite.image = sprite.open_image
-                        sprite.open = True
+                        text_font = pygame.font.Font(None, 40)  #Text Font
+                        white = (255,255,255)
+                        text = text_font.render(sprite.sign[1], True, white)
+                        textRect = text.get_rect()
+                        textRect.center = (sprite.rect.x, sprite.rect.y - 48)
+                        screen.blit(text, textRect)
                         
-                
-                
-                
-                if sprite.sign[0]:
-                    
-                    text_font = pygame.font.Font(None, 40)  #Text Font
-                    white = (255,255,255)
-                    text = text_font.render(sprite.sign[1], True, white)
-                    textRect = text.get_rect()
-                    textRect.center = (sprite.rect.x, sprite.rect.y - 48)
-                    screen.blit(text, textRect)
-                    
-                if sprite.damage == True:
-                    
-                    #Death animation
-                    player.status = 'death'
-                    if player.death == 20:
+                    if sprite.damage == True:
                         
-                        main(self.layout_index)  
-                
+                        #Death animation
+                        player.status = 'death'
+                        if player.death == 20:
+                            
+                            main(self.layout_index)  
                     
-                if sprite.open:
-                    pass
-                else:
-                    if player.direction.x < 0:
-                        player.rect.left = sprite.rect.right
+                     
+                    if sprite.open:
+                        pass
+                    else:
+                        if player.direction.x < 0:
+                            player.rect.left = sprite.rect.right
                         if sprite.climb:
                             player.direction.y = 1
                             player.double_jump = 1
-                    elif player.direction.x > 0:
-                        player.rect.right = sprite.rect.left
-                        if sprite.climb:
-                            player.direction.y = 1
-                            player.double_jump = 1
-                            
-                            
-                    else: player.gravity = 0.8
+                        elif player.direction.x > 0:
+                            player.rect.right = sprite.rect.left
+                            if sprite.climb:
+                                player.direction.y = 1
+                                player.double_jump = 1
+                                
+                                
+            else: player.gravity = 0.8
                     
                     
         
