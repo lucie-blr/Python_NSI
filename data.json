@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"WIDTH": 1280, "HEIGHT": 720, "FULL": "None", "coin": 15898690, "unlock": [{"map1": "True", "map2": "True", "map3": "True", "map4": "None", "map5": "None", "map6": "None"}]}
-=======
-{"WIDTH": 1280, "HEIGHT": 720, "FULL": "None", "coin": 15898689, "unlock": {"map1": "True", "map2": "None", "map3": "None", "map4": "None", "map5": "None", "map6": "None"}, "skin": {"1": "True", "2": "None", "3": "None", "4": "None", "5": "None", "6": "None"}}
->>>>>>> 86bb5177cfdd8332867ba2657ad4db54fd0278a6
+{"WIDTH": 1280, "HEIGHT": 720, "FULL": "None", "coin": 15898692, "unlock": {"map1": "True", "map2": "None", "map3": "None", "map4": "None", "map5": "None", "map6": "None"}, "skin": {"1": "True", "2": "None", "3": "None", "4": "None", "5": "None", "6": "None"}}

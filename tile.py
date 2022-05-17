@@ -77,6 +77,7 @@ class Tile_sign(Tile):
         self.image = pygame.image.load("./alien/sign.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.sign[0] = True
+        self.open = True
 
 class Tile_end(Tile):
     def __init__(self, pos):
