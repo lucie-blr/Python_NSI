@@ -8,30 +8,34 @@ import run
 import select
 import button
 import json
-import button
 from PIL import Image
 from datetime import datetime
 
 class Level:
-    def __init__(self, level_data, surface, spawn):
+    
+    def __init__(self, level_data, surface, spawn): #setup basics 
         self.display_surface = surface
         self.spawn = spawn
         self.setup(level_data, surface)
         self.world_shift = 0
         
+    
+    def setup(self, layout_index, screen): 
         
-    def setup(self, layout_index, screen):
+        #Definition objects groups
         self.tiles = pygame.sprite.Group()
         self.mobs = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.bullet = pygame.sprite.GroupSingle()
+        
+        #Definition variable who need the level number
         messages = levelsign[layout_index]
         sign_index = 0
         self.layout_index = layout_index
-        print(len(levelmap), layout_index)
         layout = levelmap[layout_index]
-        self.bullet = pygame.sprite.GroupSingle()
         
-        with open("data.json", "r") as f:	#config size screen
+        #Configuration of a patch who move the blocks to adapt there position to the screen size
+        with open("data.json", "r") as f:
             data = json.load(f)
             FULL = data["FULL"]
             WIDTH = data["WIDTH"]
@@ -49,6 +53,7 @@ class Level:
         y_patch = y_patch * tile_size
         x_patch = x_patch * tile_size
         
+        #for all cell in the list, position the tile at the coordinate of the cell depending of the character in the cell
         for row_index,row in enumerate(layout):
             for col_index, cell in enumerate(row): 
                 if cell == 'T':
@@ -162,6 +167,9 @@ class Level:
                     y = row_index * tile_size + y_patch
                     tile = Mob((x,y) )
                     self.mobs.add(tile)
+    
+    
+    #Fonction who make the level move
     def scroll_x(self):
         player = self.player.sprite
         bullet = self.bullet.sprite
@@ -169,6 +177,7 @@ class Level:
         direction_x = player.direction.x
         width, h = pygame.display.get_surface().get_size()
         
+        #Change the "world_shift" depending of the position of the player on the screen
         if player_x < width / 3 and direction_x < 0:
             self.world_shift = 5
             bullet.speed = bullet.speed - player.speed
@@ -184,6 +193,7 @@ class Level:
             player.speed = 5
             bullet.speed = 15
         
+    #Fonction who manage the horizontal mouvement collision
     def horizontal_mouvement_collision(self,screen, level_map):
         player = self.player.sprite
         bullet = self.bullet.sprite
@@ -191,6 +201,7 @@ class Level:
         player.rect.x += player.direction.x * player.speed
         
         for sprite in self.mobs.sprites():
+            #If the player touch the mob, play the dead animation and kill the player
             if sprite.rect.colliderect(player.rect):
                 if sprite.damage == True:
                     #Death animation
@@ -198,42 +209,37 @@ class Level:
                     if player.death == 20:
                         pygame.mixer.music.pause()
                         main(self.layout_index)  
+            
+            #Make despawn the mobs or breakable box who touch the bullet
             if sprite.rect.colliderect(bullet.rect):
-                try:
-                    if sprite.mob:
-                        sprite.rect.y = -2000
-                        player.coin += 1
-                        with open("data.json", "r") as f:	#open and read
-                            data = json.load(f)
-                        data["coin"] += 1
-                        with open("data.json", "w") as f:	#add coin
-                            json.dump(data,f)
-                        bullet.direction.x = 0
-                        bullet.rect.y = 2000    
-                        bullet.Ask_bullet = True 
                 
-                except AttributeError:
-                    pass
-
+                if sprite.mob:
+                    sprite.rect.y = -2000
+                    player.coin += 1
+                    with open("data.json", "r") as f:	#open and read
+                        data = json.load(f)
+                    data["coin"] += 1
+                    with open("data.json", "w") as f:	#add coin
+                        json.dump(data,f)
+                    bullet.direction.x = 0
+                    bullet.rect.y = 2000    
+                    bullet.Ask_bullet = True 
+                
+   
                 
         
         for sprite in self.tiles.sprites():
             
+            #If the bullet touch a wall, make the bullet despawn
             if sprite.rect.colliderect(bullet.rect):
                 
                 if sprite.open:
                     pass
                 elif sprite.mob:
-                        sprite.rect.y = -2000
-                        player.coin += 1
-                        with open("data.json", "r") as f:	#open and read
-                            data = json.load(f)
-                        data["coin"] += 1
-                        with open("data.json", "w") as f:	#add coin
-                            json.dump(data,f)
-                        bullet.direction.x = 0
-                        bullet.rect.y = 2000  
-                        bullet.Ask_bullet = True  
+                    sprite.rect.y = -2000
+                    bullet.direction.x = 0
+                    bullet.rect.y = 2000  
+                    bullet.Ask_bullet = True  
                 else:
                     bullet.direction.x = 0
                     bullet.rect.y = 2000  
@@ -241,18 +247,24 @@ class Level:
                      
             
             if sprite.rect.colliderect(player.rect):
-                    if sprite.end:
-                        with open("data.json", "r") as f:	#config size screen
+                    if sprite.end: #If the sprite is the end flag, stop the level and gave access of the next level to player
+                        with open("data.json", "r") as f:
                             data = json.load(f)
                             WIDTH = data["WIDTH"]
                             HEIGHT = data["HEIGHT"]
-                        text_font = pygame.font.Font(None, 60)  #Text Font
+                            
+                        #Text
+                        text_font = pygame.font.Font(None, 60)  
                         white = (255,255,255)
                         text = text_font.render("Level finished !", True, white)
                         textRect = text.get_rect()
                         textRect.center = (WIDTH/2, HEIGHT/2)
                         screen.blit(text, textRect)
+                        
+                        #Animation and stop the player
                         player.speed = 0
+                        player.gravity = 0
+                        player.jump_speed = 0
                         player.status = "win"
                         self.world_shift = 0
                         if player.death == 4:
@@ -262,11 +274,13 @@ class Level:
                             with open("data.json","w") as f:
                                 json.dump(data,f)
                             select.main()
+                            
+                    #Despawn the key and add a key to the keys of player
                     if sprite.key:
                         player.key = player.key + 1
                         sprite.rect.y = sprite.rect.y + 2000
                             
-                 
+                    #Open the door and remove a key to the keys of player
                     if sprite.door:
                         if player.key > 0:
                             player.key -= 1
@@ -276,16 +290,18 @@ class Level:
                             
                     
                     
-                    
+                    #Show a message if the player is on a sign
                     if sprite.sign[0]:
                         
-                        text_font = pygame.font.Font(None, 40)  #Text Font
+                        text_font = pygame.font.Font(None, 40)
                         white = (255,255,255)
                         text = text_font.render(sprite.sign[1], True, white)
                         textRect = text.get_rect()
                         textRect.center = (sprite.rect.x, sprite.rect.y - 48)
                         screen.blit(text, textRect)
                         
+                        
+                    #Make death animation and restart the level
                     if sprite.damage == True:
                         
                         #Death animation
@@ -295,9 +311,9 @@ class Level:
                             main(self.layout_index)  
                     
                      
-                    if sprite.open:
+                    if sprite.open: #If the tile is transparent, make nothing
                         pass
-                    else:
+                    else: #If the player touch the wall, set the player speed to 0, set the double jump of player to 1
                         if player.direction.x < 0:
                             player.rect.left = sprite.rect.right
                             if sprite.climb:
@@ -312,8 +328,7 @@ class Level:
                                 
             else: player.gravity = 0.8
                     
-                    
-        
+    #Fonction who manage the vertical mouvement collision
     def vertical_mouvement_collision(self,screen, level_map):
         player = self.player.sprite
         player.apply_gravity()
@@ -377,7 +392,7 @@ class Level:
 
                     if sprite.open:
                         pass
-                    else:
+                    else: #Check if the player can go up or down
                         if player.direction.y > 0:
                             player.rect.bottom = sprite.rect.top
                             player.direction.y = 0
@@ -386,13 +401,15 @@ class Level:
                         elif player.direction.y < 0:
                             player.rect.top = sprite.rect.bottom
                             player.direction.y = 0
-                    
+    
+    #Fonction who call the bullet if it's possible
     def bullet_update(self):
         player = self.player.sprite
         bullet = self.bullet.sprite 
         if player.bullet and bullet.Ask_bullet:
             bullet.bullet(player)   
     
+    #Fonction who call every others fonctions
     def run(self,screen, level_map):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
@@ -408,7 +425,7 @@ class Level:
         self.vertical_mouvement_collision(screen, level_map)
         self.player.draw(self.display_surface)
         
-        with open("data.json", "r") as f:	#config size screen
+        with open("data.json", "r") as f:
             data = json.load(f)
             WIDTH = data["WIDTH"]
             HEIGHT = data["HEIGHT"]
@@ -431,17 +448,24 @@ class Level:
                 json.dump(data,f)
             select.main()
 
+#Fonction to call to start the game
 def main(level_map):
     def buttons_draw(screen):
         for b in buttons:
             b.draw(screen)
 
     pygame.init()
-    pygame.display.set_caption('NekoDarkLand')	#window title
+    with open("data.json", "r") as f:
+        data = json.load(f)
+        WIDTH = data["WIDTH"]
+        HEIGHT = data["HEIGHT"]
+        FULL = data["FULL"]
+        caption = data["caption"]
+    pygame.display.set_caption(caption)	#window title
 
     buttons = []
     
-    with open("data.json", "r") as f:	#config size screen
+    with open("data.json", "r") as f:
         data = json.load(f)
         WIDTH = data["WIDTH"]
         HEIGHT = data["HEIGHT"]
@@ -457,6 +481,7 @@ def main(level_map):
 
     clock = pygame.time.Clock()
     
+    #Change the music depending of the level selected
     if level_map == 1:
         bg = pygame.image.load("./alien/background1.jpg")
         pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
@@ -478,10 +503,11 @@ def main(level_map):
 
     spawn = "null"
     
-    
+    #Fonction who call the music in while
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.2)
-    
+    pygame.mixer.music.set_volume(0.02)
+
+    #Create level
     level = Level(level_map, screen, spawn)
 
     pause = pygame.image.load("./game-image/pause.png")

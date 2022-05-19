@@ -8,8 +8,13 @@ def main():
 			b.draw(screen)
 
 	pygame.init()
-
-	pygame.display.set_caption('NekoDarkLand')	#window title
+	with open("data.json", "r") as f:
+		data = json.load(f)
+		WIDTH = data["WIDTH"]
+		HEIGHT = data["HEIGHT"]
+		FULL = data["FULL"]
+		caption = data["caption"]
+	pygame.display.set_caption(caption)	#window title
 	clock = pygame.time.Clock()		#FPS
 
 	text_font = pygame.font.Font(None, 60)	#Text Font
@@ -17,13 +22,7 @@ def main():
 	bg = pygame.image.load(r'bg.gif')	# background annimation
 
 	buttons = []
-
-	with open("data.json", "r") as f:	#config size screen
-		data = json.load(f)
-		WIDTH = data["WIDTH"]
-		HEIGHT = data["HEIGHT"]
-		FULL = data["FULL"]
-
+ 
 	if FULL == "None":	
 		screen = pygame.display.set_mode((WIDTH, HEIGHT))
 	else:

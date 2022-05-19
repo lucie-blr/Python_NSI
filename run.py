@@ -9,7 +9,13 @@ def main():
 			b.draw(screen)
 
 	pygame.init()
-	pygame.display.set_caption('NekoDarkLand')	#window title
+	with open("data.json", "r") as f:
+		data = json.load(f)
+		WIDTH = data["WIDTH"]
+		HEIGHT = data["HEIGHT"]
+		FULL = data["FULL"]
+		caption = data["caption"]
+	pygame.display.set_caption(caption)	#window title
 	clock = pygame.time.Clock()		#FPS
 	pygame.mixer.music.stop()
 	text_font = pygame.font.Font(None, 22)	#Text Font
