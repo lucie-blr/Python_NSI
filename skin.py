@@ -188,17 +188,22 @@ def main():
 						if s1 == "True":
 							print("p")
 						elif coin >=0 and s1 == "None":
-							print("p")
-							with open("data.json", "r") as f:	#open and read
-                        		data = json.load(f)
-                        	data["skin"]["1"] = "True"
-                        	with open("data.json", "w") as f:	#add skin
-                            	json.dump(data,f)
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["1"] = "True"
+							data["coin"] -= 0
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#Back
 						if s2 == "True":
 							print("p")
 						elif coin >=20 and s1 == "None":
-							print("p")
+							data["coin"] -= 0
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["2"] = "True"
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 					if s3 == "True" or coin >=40:
 						if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#Back
 							print("p")
