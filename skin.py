@@ -202,11 +202,20 @@ def main():
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
 							data["skin"]["2"] = "True"
+							data["coin"] -= 20
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if s3 == "True" or coin >=40:
-						if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#Back
-							print("p")
+					if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+							if s3 == "True":
+								print("p")
+							elif coin >=40 and s3 == "None":
+								data["coin"] -= 0
+								with open("data.json", "r") as t:	#open and read
+									data = json.load(t)
+								data["skin"]["3"] = "True"
+								data["coin"] -= 40
+								with open("data.json", "w") as f:	#add skin
+									json.dump(data,f)
 					if s4 == "True" or coin >=60:
 						if w1 <= mouse[0] <= w1+200 and h2-10 <= mouse[1] <= h2+30:	#Back
 							print("p")
