@@ -4,6 +4,7 @@ import sys
 import button
 from player import Player
 import run
+import select
 from settings import import_folder
 
 def main():
@@ -181,11 +182,7 @@ def main():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
-
-					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
-						run.main()
-
-					if w1 <= mouse[0] <= w1+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+					if w1 <= mouse[0] <= w1+200 and h1-10 <= mouse[1] <= h1+30:	#skin 1
 						if s1 == "True":
 							print("p")
 						elif coin >=0 and s1 == "None":
@@ -195,7 +192,7 @@ def main():
 							data["coin"] -= 0
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#skin 2
 						if s2 == "True":
 							print("p")
 						elif coin >=20 and s1 == "None":
@@ -206,7 +203,7 @@ def main():
 							data["coin"] -= 20
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+					if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#skin 3
 						if s3 == "True":
 							print("p")
 						elif coin >=40 and s3 == "None":
@@ -217,7 +214,7 @@ def main():
 							data["coin"] -= 40
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if w1 <= mouse[0] <= w1+200 and h2-10 <= mouse[1] <= h2+30:	#Back
+					if w1 <= mouse[0] <= w1+200 and h2-10 <= mouse[1] <= h2+30:	#skin 4
 						if s4 == "True":
 							print("p")
 						elif coin >=60 and s4 == "None":
@@ -225,23 +222,35 @@ def main():
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
 							data["skin"]["4"] = "True"
-							data["coin"] -= 40
+							data["coin"] -= 60
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if w2 <= mouse[0] <= w2+200 and h2-10 <= mouse[1] <= h2+30:	#Back
-						if s4 == "True":
+					if w2 <= mouse[0] <= w2+200 and h2-10 <= mouse[1] <= h2+30:	#skin 5
+						if s5 == "True":
 							print("p")
-						elif coin >=60 and s4 == "None":
+						elif coin >=100 and s5== "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
-							data["skin"]["4"] = "True"
+							data["skin"]["5"] = "True"
 							data["coin"] -= 100
 							with open("data.json", "w") as f:	#add skin
 								json.dump(data,f)
-					if s6 == "True" or coin >=150:
-						if w3 <= mouse[0] <= w3+200 and h2-10 <= mouse[1] <= h2+30:	#Back
+					if w3 <= mouse[0] <= w3+200 and h2-10 <= mouse[1] <= h2+30:	#skin 6
+						if s6 == "True":
 							print("p")
+						elif coin >=150 and s5== "None":
+							data["coin"] -= 0
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["6"] = "True"
+							data["coin"] -= 150
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
+
+					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
+						select.main()
+						
 					
 
 		buttons_draw(screen)	#show button
