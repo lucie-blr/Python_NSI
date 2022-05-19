@@ -46,7 +46,7 @@ levelmap=[  [ #le joueur voit par paquet de dix lignes
 'WAAAWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
 'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGGGGGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
 '   ',
-'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
+'↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑',
 '8'],
 ['EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
  'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
@@ -71,11 +71,42 @@ levelmap=[  [ #le joueur voit par paquet de dix lignes
 '   ',
 '   ',
 '   ',
-'SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS',
+'↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑'
+'8'],
+['EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGGGGGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGGGGGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGGGGGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE',
+'EEEEEEEEEEEEEETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+'EEEEEEEEEEEEEE                                                                                                                                                         ',
+'EEEEEEEEEEEEEE                                                                                                                                                      ',
+'EEEEEEEEEEEEEE                                                                                                                                                      ',
+'EEEEEEEEEEEEEE                                                                                                                                                      ',
+'EEEEEEEEEEEEEE                                                        W                                                                                              ',
+'EEEEEEEEEEEEEE    P                                              W                                   L   W  ↑   W                                                      ',
+'EEEEEEEEEEEEEE       L                                       W              W                       W       W                                                             ',
+'EEEEEEEEEEEEEEGGGGGGGGGGGGGG                                 W                         GGGGGGGGGG        ↑                                                                                   ',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE              ↑↑↑↑↑↑↑↑↑              W                     EEEEEEEEEE        W                                                                                  ',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE              GGGGGGGGG              W     W               EEEEEEEEEE                                                                                            ',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE     GGGGG                       W                    W    EEEEEEEEEE                                                                                                ',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE     EEEEE                                                 EEEEEEEEEE                                                                                      ',   
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE     EEEEE    GGGGGGGGG        M    M             W        EEEEEEEEEE                                                                                                     ',   
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEE     EEEEE    EEEEEEEEE       GGGGGGGGGG                   EEEEEEEEEE                                                                                                      ',  
+'AAWWEEEEEEEEEEEEEEEEEEEEEEEE↑↑↑↑↑EEEEE    EEEEEEEEE       EEEEEEEEEE                   EEEEEEEEEE                                                                                         ',
+'AAAWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE    EEEEEEEEE       EEEEEEEEEE                   EEEEEEEEEE                                                                                 ',
+'WAAWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE     EEEEEEE        EEEEEEEEEE                   EEEEEEEEEE                                                                                       ',
+'WAAWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE     EEEEEEE        EEEEEEEEEE                   EEEEEEEEEE                                                                                        ',
+'WAAAWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE      EEEEE         EEEEEEEEEE                   EEEEEEEEEE                                                                                      ',
+'WAAAWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE      EEEEE         EEEEEEEEEE                   EEEEEEEEEE                                                                                      ',
+'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE      EEEEE         EEEEEEEEEE                   EEEEEEEEEE                                                                                      ',
+'   ',
+'   ',
+'   ',
+'↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑'
 '8']]
 levelsign = [[],
 ["Keep calm, but the spikes can kill you.","Press directional keys to move.","You can also make double jump.","As you can double jump, you can climb the walls.","Use your fucking gun to shoot the mobs."],
-[]]
+[],
+["You'll have to die and retry again and again. Good luck !","Be patient, this level MAY be a little hardel than level 2."]]
 
 
 tile_size = 48
