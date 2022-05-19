@@ -87,7 +87,7 @@ def main():
 		buy6_button = button.Button('Buy for 150', 200, 40, (w3, h2), 5)
 
 	back_button = button.Button('Back', 200, 40, (w_center_200, h_bottom+100), 5)
-
+	#use class button 
 	buttons.append(buy1_button)
 	buttons.append(buy2_button)
 	buttons.append(buy3_button)
@@ -185,9 +185,48 @@ def main():
 					if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
 						run.main()
 
-					if s1 == "True" and coin <=0:
-						if w_center_200 <= mouse[0] <= w_center_200+200 and h_bottom+100-10 <= mouse[1] <= h_bottom+150:	#Back
+					if w1 <= mouse[0] <= w1+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+						if s1 == "True":
 							print("p")
+						elif coin >=0 and s1 == "None":
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["1"] = "True"
+							data["coin"] -= 0
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
+					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+						if s2 == "True":
+							print("p")
+						elif coin >=20 and s1 == "None":
+							data["coin"] -= 0
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["2"] = "True"
+							data["coin"] -= 20
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
+					if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#Back
+							if s3 == "True":
+								print("p")
+							elif coin >=40 and s3 == "None":
+								data["coin"] -= 0
+								with open("data.json", "r") as t:	#open and read
+									data = json.load(t)
+								data["skin"]["3"] = "True"
+								data["coin"] -= 40
+								with open("data.json", "w") as f:	#add skin
+									json.dump(data,f)
+					if s4 == "True" or coin >=60:
+						if w1 <= mouse[0] <= w1+200 and h2-10 <= mouse[1] <= h2+30:	#Back
+							print("p")
+					if s5 == "True" or coin >=100:
+						if w2 <= mouse[0] <= w2+200 and h2-10 <= mouse[1] <= h2+30:	#Back
+							print("p")
+					if s6 == "True" or coin >=150:
+						if w3 <= mouse[0] <= w3+200 and h2-10 <= mouse[1] <= h2+30:	#Back
+							print("p")
+					
 
 		buttons_draw(screen)	#show button
 		screen.blit(text, textRect)	#show text
