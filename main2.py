@@ -56,37 +56,37 @@ class Level:
                     y = row_index * tile_size + y_patch
                     tile = Tile((x,y) )
                     self.tiles.add(tile)
-                if cell == 'G':
+                elif cell == 'G':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_ground((x,y) )
                     self.tiles.add(tile)
-                if cell == 'E':
+                elif cell == 'E':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_earth((x,y) )
                     self.tiles.add(tile)
-                if cell == 'W':
+                elif cell == 'W':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_wall((x,y) )
                     self.tiles.add(tile)
-                if cell == 'U':
+                elif cell == 'U':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_unc_wall((x,y) )
                     self.tiles.add(tile)
-                if cell == 'A':
+                elif cell == 'A':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_bg_wall((x,y) )
                     self.tiles.add(tile)
-                if cell == 'V':
+                elif cell == 'V':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_bg_glass((x,y) )
                     self.tiles.add(tile)
-                if cell == 'L':
+                elif cell == 'L':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_sign((x, y) )
@@ -94,7 +94,7 @@ class Level:
                     self.tiles.add(tile)
                     print(sign_index)
                     sign_index = sign_index + 1
-                if cell == 'P':
+                elif cell == 'P':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     
@@ -102,62 +102,62 @@ class Level:
                         
                     self.player.add(player_sprite)
                     print(self.spawn)
-                if cell == '↑':
+                elif cell == '↑':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_spike((x,y+48) )
                     self.tiles.add(tile)
-                if cell == '↟':
+                elif cell == '↟':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_fake_spike((x,y+48) )
                     self.tiles.add(tile)
-                if cell == '→':
+                elif cell == '→':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_right_spike((x,y+48) )
                     self.tiles.add(tile)
-                if cell == '←':
+                elif cell == '←':
                     x = col_index * tile_size - x_patch + 24
                     y = row_index * tile_size + y_patch
                     tile = Tile_left_spike((x,y+48) )
                     self.tiles.add(tile)
-                if cell == '↓':
+                elif cell == '↓':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch - 24
                     tile = Tile_bottom_spike((x,y+48) )
                     self.tiles.add(tile)
-                if cell == 'Y':
+                elif cell == 'Y':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_s((x,y) )
                     self.tiles.add(tile)
-                if cell == 'F':
+                elif cell == 'F':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_end((x,y) )
                     self.tiles.add(tile)
-                if cell == '8':
+                elif cell == '8':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     player_sprite = Bullet((x,y))
                     self.bullet.add(player_sprite)
-                if cell == 'K':
+                elif cell == 'K':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_key((x,y) )
                     self.tiles.add(tile)
-                if cell == 'D':
+                elif cell == 'D':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_door((x,y) )
                     self.tiles.add(tile)
-                if cell == 'B':
+                elif cell == 'B':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Tile_box((x,y) )
                     self.tiles.add(tile)
-                if cell == 'M':
+                elif cell == 'M':
                     x = col_index * tile_size - x_patch
                     y = row_index * tile_size + y_patch
                     tile = Mob((x,y) )
