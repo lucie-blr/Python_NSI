@@ -150,28 +150,9 @@ def main():
 	def coin_load():
 		cash_image = pygame.image.load(r'./alien/cash.png')	#image for coin
 		t = len(str(coin))
-		if t <= 99:
-			w_coin_total = 70
-			h_coin_total = 70
-		if t <= 999:
-			w_coin_total = 70
-			h_coin_total = 70
-		if t <= 9999:
-			w_coin_total = 70
-			h_coin_total = 70
-		else:
-			w_coin_total = 70
-			h_coin_total = 70
 		cash_image_total = pygame.transform.scale(cash_image, (25, 25))
-		screen.blit(cash_image_total, (w_coin_total, h_coin_total))
-		#coin img position
-		# w_coin = w1
-		# h_coin = h1
-		# for i in range(2):
-		# 	for i in range(3):
-		# 		screen.blit(cash_image_total, (w_coin+165, h_coin))
-		# 		w_coin = w2
-		# 	h_coin = h2
+		screen.blit(cash_image_total, (WIDTH - (WIDTH-250) , HEIGHT - (HEIGHT-27)))
+
 
 	while True:
 		frame_index, frame_index2 = skin(frame_index, frame_index2)	#show skin
