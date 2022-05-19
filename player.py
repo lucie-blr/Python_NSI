@@ -204,10 +204,3 @@ class Bullet(pygame.sprite.Sprite):
                 self.cooldown = time.time() + 0.2
             
             
-#Tutoriel : Balle
-#
-#Quand tu tires la balle, tu dois définir une variable qui a comme valeur les secondes passées depuis l'heure UNIX (time.time())
-#pour le cooldown, tu compares l'heure UNIX (time.time()) a la variable que tu as définis et à laquelle tu as ajouté x secondes 
-#
-#Pour vérifier la collision, tu regardes le code du joueur. Quand la balle touche un mur, tu mets la vitesse de la balle à zéro 
-#et tu places la balle sous le sol
