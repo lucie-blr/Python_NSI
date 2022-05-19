@@ -9,7 +9,7 @@ def main():
 
 	pygame.init()
 
-	pygame.display.set_caption('NekoDarkLand')	#window title
+	pygame.display.set_caption('RedHoodDarkLand')	#window title
 	clock = pygame.time.Clock()		#FPS
 
 	text_font = pygame.font.Font(None, 60)	#Text Font
