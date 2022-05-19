@@ -189,11 +189,11 @@ def main():
 							print("p")
 						elif coin >=0 and s1 == "None":
 							print("p")
-							# with open("data.json", "r") as f:	#open and read
-                        	# 	data = json.load(f)
-                        	# data["skin"]["1"] = "True"
-                        	# with open("data.json", "w") as f:	#add skin
-                            # 	json.dump(data,f)
+							with open("data.json", "r") as f:	#open and read
+                        		data = json.load(f)
+                        	data["skin"]["1"] = "True"
+                        	with open("data.json", "w") as f:	#add skin
+                            	json.dump(data,f)
 					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#Back
 						if s2 == "True":
 							print("p")
