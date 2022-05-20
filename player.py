@@ -7,7 +7,7 @@ from settings import import_folder
 class Player(pygame.sprite.Sprite): #Création de la class
     def __init__(self,pos): #Fonction qui se lance à la première utilisation de la class
         super().__init__() 
-        self.skin = 'red'
+        self.skin = 'rgb'
         self.import_character_assets() #Importation des différentes images de l'objet
         self.frame_index = 0 #Définition de la "frame index" qui servira à l'animation
         self.animation_speed = 0.15 #Définition de la vitesse de défilement des images dans une animation
