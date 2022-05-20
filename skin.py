@@ -165,7 +165,11 @@ def main():
 				if pygame.mouse.get_pressed()[0]:	#Check click button and react
 					if w1 <= mouse[0] <= w1+200 and h1-10 <= mouse[1] <= h1+30:	#skin 1
 						if s1 == "True":
-							print("p")
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 1
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 						elif coin >=0 and s1 == "None":
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
@@ -175,8 +179,12 @@ def main():
 								json.dump(data,f)
 					if w2 <= mouse[0] <= w2+200 and h1-10 <= mouse[1] <= h1+30:	#skin 2
 						if s2 == "True":
-							print("p")
-						elif coin >=20 and s1 == "None":
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 2
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
+						elif coin >=20 and s2 == "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
@@ -186,7 +194,11 @@ def main():
 								json.dump(data,f)
 					if w3 <= mouse[0] <= w3+200 and h1-10 <= mouse[1] <= h1+30:	#skin 3
 						if s3 == "True":
-							print("p")
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 3
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 						elif coin >=40 and s3 == "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
@@ -197,7 +209,11 @@ def main():
 								json.dump(data,f)
 					if w1 <= mouse[0] <= w1+200 and h2-10 <= mouse[1] <= h2+30:	#skin 4
 						if s4 == "True":
-							print("p")
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 4
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 						elif coin >=60 and s4 == "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
@@ -208,7 +224,11 @@ def main():
 								json.dump(data,f)
 					if w2 <= mouse[0] <= w2+200 and h2-10 <= mouse[1] <= h2+30:	#skin 5
 						if s5 == "True":
-							print("p")
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 5
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
 						elif coin >=100 and s5== "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
@@ -219,8 +239,12 @@ def main():
 								json.dump(data,f)
 					if w3 <= mouse[0] <= w3+200 and h2-10 <= mouse[1] <= h2+30:	#skin 6
 						if s6 == "True":
-							print("p")
-						elif coin >=150 and s5== "None":
+							with open("data.json", "r") as t:	#open and read
+								data = json.load(t)
+							data["skin"]["select"] = 6
+							with open("data.json", "w") as f:	#add skin
+								json.dump(data,f)
+						elif coin >=150 and s6== "None":
 							data["coin"] -= 0
 							with open("data.json", "r") as t:	#open and read
 								data = json.load(t)
