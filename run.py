@@ -2,7 +2,6 @@ import pygame, sys, json
 import gameset
 import select
 import button
-from fontTools.ttLib import TTFont
 
 
 def main():

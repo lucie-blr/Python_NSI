@@ -2,12 +2,19 @@ import pygame
 import time
 import os
 from settings import import_folder
+import json
 
 
 class Player(pygame.sprite.Sprite): #Création de la class
     def __init__(self,pos): #Fonction qui se lance à la première utilisation de la class
         super().__init__() 
-        self.skin = 'rgb'
+        with open("data.json", "r") as t:	#open and read
+            data = json.load(t)
+            skin = data["skin"]["select"]
+        if skin == 1:
+            self.skin = 'red'
+        elif skin == 2 :
+            self.skin = 'blue'
         self.import_character_assets() #Importation des différentes images de l'objet
         self.frame_index = 0 #Définition de la "frame index" qui servira à l'animation
         self.animation_speed = 0.15 #Définition de la vitesse de défilement des images dans une animation
