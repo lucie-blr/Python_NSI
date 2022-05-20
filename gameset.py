@@ -12,7 +12,7 @@ def main():
 	pygame.display.set_caption('RedHoodDarkLand')	#window title
 	clock = pygame.time.Clock()		#FPS
 
-	text_font = pygame.font.Font(None, 60)	#Text Font
+	text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 40) #text font
 
 	bg = pygame.image.load(r'bg.gif')	# background annimation
 

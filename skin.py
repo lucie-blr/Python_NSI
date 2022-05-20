@@ -23,8 +23,8 @@ def main():
 	pygame.display.set_caption(caption)	#window title
 	clock = pygame.time.Clock()		#FPS
 
-	text_font = pygame.font.Font(None, 60)	#Text Font
-	text_font2 = pygame.font.Font(None, 30)	#Text Font for coin text
+	text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 60) #text font
+	text_font2 = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 30) #text font
 
 	bg = pygame.image.load(r'bg.gif')	# background annimation
 	cash_iamge = pygame.image.load(r'./alien/cash.png')
