@@ -147,7 +147,7 @@ class Tile_bottom_spike(Tile_spike):
 class Mob(Tile):
     def __init__(self, pos):
         super().__init__(pos)
-        self.image = pygame.image.load("./alien/right.png")
+        self.image = pygame.image.load("./alien/slime/slime3.png")
         self.rect = self.image.get_rect(topleft = pos)
         self.damage = True
         self.mob = True
