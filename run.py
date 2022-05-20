@@ -23,8 +23,7 @@ def main():
 	clock = pygame.time.Clock()		#FPS
 	pygame.mixer.music.stop()
  
-	#font = TTFont('/Inconsolata/font.ttf')
-	text_font = pygame.font.Font(None, 22)	#Text Font
+	text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 22)
 
 	logo = pygame.image.load(r'logo.png')	#banner
 	bg = pygame.image.load(r'bg.gif')	# background annimation

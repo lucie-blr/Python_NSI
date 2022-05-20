@@ -254,7 +254,7 @@ class Level:
                             HEIGHT = data["HEIGHT"]
                             
                         #Text
-                        text_font = pygame.font.Font(None, 60)  
+                        text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 60)
                         white = (255,255,255)
                         text = text_font.render("Level finished !", True, white)
                         textRect = text.get_rect()
@@ -293,7 +293,7 @@ class Level:
                     #Show a message if the player is on a sign
                     if sprite.sign[0]:
                         
-                        text_font = pygame.font.Font(None, 40)
+                        text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 40)
                         white = (255,255,255)
                         text = text_font.render(sprite.sign[1], True, white)
                         textRect = text.get_rect()
@@ -349,7 +349,7 @@ class Level:
                             data = json.load(f)
                             WIDTH = data["WIDTH"]
                             HEIGHT = data["HEIGHT"]
-                        text_font = pygame.font.Font(None, 60)  #Text Font
+                        text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 60)  #Text Font
                         white = (255,255,255)
                         text = text_font.render("Level finished !", True, white)
                         textRect = text.get_rect()
@@ -375,7 +375,7 @@ class Level:
                                 
                     if sprite.sign[0]:
                         
-                        text_font = pygame.font.Font(None, 40)  #Text Font
+                        text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 40)  #Text Font
                         white = (255,255,255)
                         dark = (0,0,0)
                         text = text_font.render(sprite.sign[1], True, white, dark)
@@ -432,7 +432,7 @@ class Level:
         
         
         # Text
-        text_font = pygame.font.Font(None, 40)	#Text Font
+        text_font = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 40)	#Text Font
         white = (255,255,255)
         text = text_font.render(f'Level {level_map} | Keys : {self.player.sprite.key} | Coins : {self.player.sprite.coin}', True, white)
         # create a rectangular object for the text
@@ -528,7 +528,7 @@ def main(level_map):
     RUNNING, PAUSE = 0, 1
     state = RUNNING
 
-    pause_text = pygame.font.SysFont('Consolas', 50).render('Pause', True, pygame.color.Color('White'))
+    pause_text = pygame.font.Font('./font/Amatic_SC/AmaticSC-Bold.ttf', 50).render('Pause', True, pygame.color.Color('White'))
 
     while True:
         mouse = pygame.mouse.get_pos()
