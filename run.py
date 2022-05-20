@@ -2,6 +2,8 @@ import pygame, sys, json
 import gameset
 import select
 import button
+from fontTools.ttLib import TTFont
+
 
 def main():
 	def buttons_draw(screen):
@@ -16,9 +18,12 @@ def main():
 		FULL = data["FULL"]
 		caption = data["caption"]
 		font = data["font"]
+
 	pygame.display.set_caption(caption)	#window title
 	clock = pygame.time.Clock()		#FPS
 	pygame.mixer.music.stop()
+ 
+	#font = TTFont('/Inconsolata/font.ttf')
 	text_font = pygame.font.Font(None, 22)	#Text Font
 
 	logo = pygame.image.load(r'logo.png')	#banner
