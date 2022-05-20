@@ -15,6 +15,7 @@ def main():
 		HEIGHT = data["HEIGHT"]
 		FULL = data["FULL"]
 		caption = data["caption"]
+		font = data["font"]
 	pygame.display.set_caption(caption)	#window title
 	clock = pygame.time.Clock()		#FPS
 	pygame.mixer.music.stop()
