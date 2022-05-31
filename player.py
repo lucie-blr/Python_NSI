@@ -44,7 +44,6 @@ class Player(pygame.sprite.Sprite): #Création de la class
         
         for animation in self.animations.keys(): #Pour chaque état d'animation, on importe les informations des images
             self.full_path = self.character_path + animation
-            print(self.full_path)
             self.animations[animation] = import_folder(self.full_path)
             
         
