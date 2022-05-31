@@ -490,7 +490,7 @@ def main(level_map):
         pygame.mixer.music.load('./mp3/Florian_Stracker_-_03_Breaking_the_Chains.mp3')
     elif level_map == 3:
         bg = pygame.image.load("./alien/background3.jpg")
-        pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
+        pygame.mixer.music.load('./mp3/Florian_Stracker_-_07_The_Maple_Sprout.mp3')
     elif level_map == 4:
         bg = pygame.image.load("./alien/background4.jpg")
         pygame.mixer.music.load('./mp3/Florian_Stracker_-_01_The_Sword_and_the_Heart.mp3')
@@ -505,7 +505,7 @@ def main(level_map):
     
     #Fonction who call the music in while
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.02)
+    pygame.mixer.music.set_volume(1)
 
     #Create level
     level = Level(level_map, screen, spawn)
