@@ -504,6 +504,7 @@ def main(level_map):
     spawn = "null"
     
     #Fonction who call the music in while
+    
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(1)
 
